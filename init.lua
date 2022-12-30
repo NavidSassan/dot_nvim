@@ -236,7 +236,7 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     pattern = '*/rst*',
     command = ':VtrSetCommand ./b-navid',
-    group = vim.api.nvim_create_augroup('rst_b_navid', {clear = true}),
+    group = vim.api.nvim_create_augroup('RstBNavid', {clear = true}),
 })
 
 
@@ -320,24 +320,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
         vim.highlight.on_yank { higroup='IncSearch', timeout=500 }
-        vim.fn.setreg('+', vim.fn.getreg(event['regname']))
+        -- vim.fn.setreg('+', vim.fn.getreg(event['regname'])) i can't find regname in the event
+        vim.cmd([[call setreg("+", getreg(v:event.regname))]])
     end,
-    group = vim.api.nvim_create_augroup('highlight_yank', {clear = true}),
+    group = vim.api.nvim_create_augroup('YankHighlight', {clear = true}),
 })
 
 -- set correct filetype
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
-    pattern = '~/Nextcloud/it/ssh/configs/*',
+    pattern = '*/Nextcloud/it/ssh/configs/*',
     callback = function()
-        vim.o.filetype = sshconfig
+        vim.o.filetype = 'sshconfig'
     end,
-    group = vim.api.nvim_create_augroup('nextcloud_ssh_configs', {clear = true}),
+    group = vim.api.nvim_create_augroup('NextcloudSSHConfigs', {clear = true}),
 })
 
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
-    pattern = '~/git/lf/lfops/**/*.yml',
+    pattern = '*/git/lf/lfops/**/*.yml',
     callback = function()
-        vim.o.filetype = yaml.ansible
+        vim.o.filetype = 'yaml.ansible'
     end,
-    group = vim.api.nvim_create_augroup('ansible', {clear = true}),
+    group = vim.api.nvim_create_augroup('Ansible', {clear = true}),
 })
