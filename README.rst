@@ -147,14 +147,6 @@ Keybinds:
 "Entering traversal mode after the first input is a useful shortcut, especially in operator-pending mode, but it can also be used as a substitute for normal-mode f/t motions. s{char}<enter> is the same as f{char}, but works over multiple lines."
 
 
-nvim-compe
-~~~~~~~~~~
-
-Todo, replace this with https://github.com/hrsh7th/nvim-cmp
-
-* `Repo <https://github.com/hrsh7th/nvim-compe>`_
-
-
 vim-tmux-runner.vim
 ~~~~~~~~~~~~~~~~~~~
 
@@ -226,6 +218,20 @@ neodev.nvim
 
 * `Repo <https://github.com/folke/neodev.nvim>`_
 
+nvim-cmp
+~~~~~~~~
+
+"A completion engine plugin for neovim written in Lua."
+
+* `Repo <https://github.com/hrsh7th/nvim-cmp>`_
+
+Keybinds:
+
+.. csv-table::
+
+    <C-d>, scroll docs down
+    <C-f>, scroll docs up
+
 
 template
 ~~~~~~~~
@@ -276,6 +282,4 @@ https://github.com/tpope/vim-repeat
 https://github.com/tpope/vim-speeddating
 https://github.com/tpope/vim-vinegar
 
-* switch to nvim-cmp
 * switch to packer.nvim
-* switch to all lua config
