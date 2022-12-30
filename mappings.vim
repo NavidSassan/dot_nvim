@@ -104,15 +104,6 @@ imap <silent> <C-l> <Plug>luasnip-next-choice
 " vim-which-key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-" telescope.nvim
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-" telescope-project.nvim
-nnoremap <leader>fd <cmd>lua require'telescope'.extensions.project.project{}<cr>
-
 " cheatsheet.nvim
 nnoremap <unique> <leader>? <cmd>Cheatsheet<CR>
 
