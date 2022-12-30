@@ -256,22 +256,6 @@ require("lspconfig").jsonls.setup {
 }
 
 
--- local components = {
---     active = {{}, {}, {}},
--- }
-
--- table.insert(components.active[1], {
---     provider = function()
---         return navic.get_location()
---     end,
---     enabled = function() return navic.is_available() end,
--- })
-
--- require("feline").setup({
---     components = components
--- })
-
-
 -- telescope
 require('telescope').setup {
     pickers = {
@@ -342,3 +326,14 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     end,
     group = vim.api.nvim_create_augroup('Ansible', {clear = true}),
 })
+
+
+-- lualine.nvim
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = '|',
+    section_separators = '',
+  },
+}

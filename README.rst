@@ -41,7 +41,7 @@ Commands:
 
     :lua require'nvim-navic'.get_location(), Returns a pretty string with context information.
 
-TODO: integrate in statusline (feline).
+TODO: integrate in statusline.
 
 
 toggle-lsp-diagnostics.nvim
@@ -93,15 +93,17 @@ Adds support for `EditorConfig <https://editorconfig.org/>`_ to neovim. It sets 
 * `Repo <https://github.com/editorconfig/editorconfig-vim>`_
 
 
-feline.nvim
-~~~~~~~~~~~
+lualine.nvim
+~~~~~~~~~~~~
 
-"A minimal, stylish and customizable statusline for Neovim written in Lua"
+"A blazing fast and easy to configure Neovim statusline written in Lua."
 
-* `Repo <https://github.com/feline-nvim/feline.nvim>`_
+* `Repo <https://github.com/nvim-lualine/lualine.nvim>`_
 * Possible alternatives:
 
+    * `feline.nvim <https://github.com/feline-nvim/feline.nvim>`_
     * `lightline.vim <https://github.com/itchyny/lightline.vim>`_
+
 
 autolist.nvim
 ~~~~~~~~~~~~~
