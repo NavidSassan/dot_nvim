@@ -219,6 +219,13 @@ Keybinds:
     gcO, add comment above current line
     gcA, add comment at the end of line
 
+neodev.nvim
+~~~~~~~~~~~
+
+"Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API."
+
+* `Repo <https://github.com/folke/neodev.nvim>`_
+
 
 template
 ~~~~~~~~
@@ -263,7 +270,6 @@ https://github.com/nvim-lua/popup.nvim
 https://github.com/nvim-telescope/telescope.nvim
 https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/sudormrfbin/cheatsheet.nvim
-https://github.com/tami5/lspsaga.nvim
 https://github.com/tpope/vim-abolish
 https://github.com/tpope/vim-fugitive
 https://github.com/tpope/vim-repeat

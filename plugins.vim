@@ -14,6 +14,7 @@ Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 Plug 'andersevenrud/compe-tmux', {'branch': 'compe'}
 Plug 'chaoren/vim-wordmotion'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'folke/neodev.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'gaoDean/autolist.nvim'
 Plug 'ggandor/leap.nvim'

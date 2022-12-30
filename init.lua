@@ -111,10 +111,6 @@ require'lspconfig'.pyright.setup{}
 require'lspconfig'.ansiblels.setup{}
 require'lspconfig'.esbonio.setup{}
 
--- lspsaga.nvim
-local saga = require 'lspsaga'
-saga.init_lsp_saga()
-
 -- nvim-compe
 vim.o.completeopt = 'menuone,noselect'
 
@@ -360,3 +356,12 @@ require('gitsigns').setup {
     changedelete = { text = '~' },
   },
 }
+
+-- Diagnostic keymaps
+vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+
+
+-- neodev.nvim
+require('neodev').setup()
