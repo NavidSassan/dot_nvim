@@ -340,3 +340,14 @@ require('lualine').setup {
 
 -- Comment.nvim
 require('Comment').setup()
+
+-- gitsigns.nvim
+require('gitsigns').setup {
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
+  },
+}
