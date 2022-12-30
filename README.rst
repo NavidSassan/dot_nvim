@@ -199,6 +199,27 @@ Installation
     sudo dnf install cmake gdb lldb rr g++ -y
 
 
+Comment.nvim
+~~~~~~~~~~~~
+
+"Smart and Powerful commenting plugin for neovim" with native treesitter support for calculating `'commentstring'`.
+
+* `Repo <https://github.com/numToStr/Comment.nvim>`_
+* Possible alternatives:
+
+    * `vim-commentary <https://github.com/tpope/vim-commentary>`_
+
+Keybinds:
+
+.. csv-table::
+
+    gcc, line-wise comment
+    gbc, block-wise comment
+    gco, add comment below current line
+    gcO, add comment above current line
+    gcA, add comment at the end of line
+
+
 template
 ~~~~~~~~
 
@@ -244,7 +265,6 @@ https://github.com/nvim-treesitter/nvim-treesitter
 https://github.com/sudormrfbin/cheatsheet.nvim
 https://github.com/tami5/lspsaga.nvim
 https://github.com/tpope/vim-abolish
-https://github.com/tpope/vim-commentary
 https://github.com/tpope/vim-fugitive
 https://github.com/tpope/vim-repeat
 https://github.com/tpope/vim-speeddating

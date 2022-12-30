@@ -337,3 +337,6 @@ require('lualine').setup {
     section_separators = '',
   },
 }
+
+-- Comment.nvim
+require('Comment').setup()
