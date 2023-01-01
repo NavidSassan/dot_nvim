@@ -74,7 +74,6 @@ vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+'
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'yaml',
     callback = function()
-        vim.highlight.on_yank()
         vim.opt_local.indentkeys:remove('<:>')
     end,
 })
@@ -88,7 +87,6 @@ vim.g.vim_markdown_conceal_code_blocks = 0
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
-        vim.highlight.on_yank()
         vim.opt_local.foldlevel = 99
     end,
 })
@@ -442,7 +440,7 @@ require('autolist').setup({
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
-        vim.highlight.on_yank { higroup='IncSearch', timeout=500 }
+        -- vim.highlight.on_yank { higroup='IncSearch', timeout=500 } -- done by yanky.nvim
         -- vim.fn.setreg('+', vim.fn.getreg(event['regname'])) i can't find regname in the event
         vim.cmd([[call setreg("+", getreg(v:event.regname))]])
     end,
@@ -499,3 +497,28 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 
 -- neodev.nvim
 require('neodev').setup()
+
+-- yanky.nvim
+require("yanky").setup({
+    ring = {
+        history_length = 20,
+    },
+    system_clipboard = {
+        sync_with_ring = false,
+    },
+    highlight = {
+        on_put = true,
+        on_yank = true,
+        timer = 500,
+    },
+    preserve_cursor_position = {
+        enabled = true,
+    },
+})
+vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")

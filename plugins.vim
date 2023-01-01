@@ -17,6 +17,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'folke/neodev.nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'gaoDean/autolist.nvim'
+Plug 'gbprod/yanky.nvim'
 Plug 'ggandor/leap.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'

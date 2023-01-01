@@ -232,6 +232,20 @@ Keybinds:
     <C-d>, scroll docs down
     <C-f>, scroll docs up
 
+yanky.nvim
+~~~~~~~~~~
+
+Provides a yank-ring, allowing cycling through the yank history on paste. Also highlights yanks and pastes.
+
+* `Repo <https://github.com/gbprod/yanky.nvim>`_
+
+Keybinds:
+
+.. csv-table::
+
+    <C-n>, Cycle forward through the yank-ring.
+    <C-p>, Cycle backwards through the yank-ring.
+
 
 template
 ~~~~~~~~
