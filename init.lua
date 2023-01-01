@@ -368,8 +368,9 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'calc' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
     { name = 'tmux' },
   },
 }
