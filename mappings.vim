@@ -1,9 +1,6 @@
 " This file is managed by Ansible - do not edit
 " 2021111901
 
-let g:mapleader="\<Space>"
-let g:maplocalleader='\'
-
 noremap <silent> <leader>dp V:diffput<cr>
 noremap <silent> <leader>do V:diffget<cr>
 
