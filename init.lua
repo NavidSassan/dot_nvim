@@ -435,18 +435,6 @@ require('autolist').setup({
 })
 
 
-
--- highlight yanked text and copy it to the system clipboard
-vim.api.nvim_create_autocmd('TextYankPost', {
-    pattern = '*',
-    callback = function()
-        -- vim.highlight.on_yank { higroup='IncSearch', timeout=500 } -- done by yanky.nvim
-        -- vim.fn.setreg('+', vim.fn.getreg(event['regname'])) i can't find regname in the event
-        vim.cmd([[call setreg("+", getreg(v:event.regname))]])
-    end,
-    group = vim.api.nvim_create_augroup('YankHighlight', {clear = true}),
-})
-
 -- set correct filetype
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     pattern = '*/Nextcloud/it/ssh/configs/*',
@@ -522,3 +510,12 @@ vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 vim.keymap.set({"n","x"}, "y", "<Plug>(YankyYank)")
+
+
+-- Add undo break-points
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
+
+
+vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
