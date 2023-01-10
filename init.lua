@@ -442,34 +442,34 @@ vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>fd', require'telescope'.extensions.project.project, { desc = 'Project [D]rawer' })
 
 
--- autolist.nvim
-require('autolist').setup({
-    colon = {
-        indent_raw = false,
-        preferred = "*"
-    },
-    invert = {
-        ul_marker = "*",
-    },
-    lists = {
-        preloaded = {
-            generic = {
-                "unordered",
-                "ascii",
-            },
-        },
-        filetypes = {
-            generic = {
-                "markdown",
-                "rst",
-                "text",
-            },
-            },
-        },
-        -- normal_mappings = {
-            --  invert = { "<c-r>+[catch]" },
-            -- },
-})
+-- -- autolist.nvim
+-- require('autolist').setup({
+--     colon = {
+--         indent_raw = false,
+--         preferred = "*"
+--     },
+--     invert = {
+--         ul_marker = "*",
+--     },
+--     lists = {
+--         preloaded = {
+--             generic = {
+--                 "unordered",
+--                 "ascii",
+--             },
+--         },
+--         filetypes = {
+--             generic = {
+--                 "markdown",
+--                 "rst",
+--                 "text",
+--             },
+--             },
+--         },
+--         -- normal_mappings = {
+--             --  invert = { "<c-r>+[catch]" },
+--             -- },
+-- })
 
 
 -- set correct filetype
