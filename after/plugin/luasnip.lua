@@ -67,6 +67,8 @@ local d = ls.dynamic_node
 -- TODO: Document what I've learned about lambda
 local l = require("luasnip.extras").lambda
 
+local rep = require("luasnip.extras").rep
+
 local events = require "luasnip.util.events"
 
 -- local str_snip = function(trig, expanded)
@@ -253,6 +255,18 @@ snippets.python = {
         t("print(f'''{"),
         i(1),
         t("=}''')"),
+        i(0),
+    }),
+}
+
+snippets.php = {
+
+    snippet({ trig = "errlog" }, {
+        t('error_log("'),
+        rep(1),
+        t(': " . print_r($'),
+        i(1),
+        t(', true));'),
         i(0),
     }),
 }
