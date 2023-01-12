@@ -261,10 +261,10 @@ snippets.python = {
 
 snippets.php = {
 
-    snippet({ trig = "errlog" }, {
-        t('error_log("'),
+    snippet({ trig = "elog" }, {
+        t("error_log('"),
         rep(1),
-        t(': " . print_r($'),
+        t(": ' . print_r($"),
         i(1),
         t(', true));'),
         i(0),
