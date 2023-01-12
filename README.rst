@@ -246,6 +246,21 @@ Keybinds:
     <C-n>, Cycle forward through the yank-ring.
     <C-p>, Cycle backwards through the yank-ring.
 
+hex.nvim
+~~~~~~~~
+
+Hex editor inside vim.
+
+* `Repo <https://github.com/RaafatTurki/hex.nvim>`_
+
+Commands:
+
+.. csv-table::
+
+    :HexDump, show hex view
+    :HexAssemble, show "normal" view
+    :HexToggle, toggle between views
+
 
 template
 ~~~~~~~~

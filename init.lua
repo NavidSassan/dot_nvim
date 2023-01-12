@@ -552,3 +552,7 @@ vim.keymap.set("i", ";", ";<c-g>u")
 
 
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
+
+
+-- hex.nvim
+require 'hex'.setup()

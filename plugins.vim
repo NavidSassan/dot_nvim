@@ -9,6 +9,7 @@ call plug#begin('~/.neovim/plugged')
 Plug 'EdenEast/nightfox.nvim'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'RaafatTurki/hex.nvim'
 Plug 'SmiteshP/nvim-navic'
 Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 Plug 'andersevenrud/compe-tmux'
