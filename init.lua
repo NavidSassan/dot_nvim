@@ -31,7 +31,7 @@ vim.o.cmdheight = 2
 vim.opt.diffopt:append('vertical')
 vim.o.hidden = true
 vim.o.inccommand = 'split'
-vim.o.redrawtime = 100
+vim.o.redrawtime = 200
 vim.o.laststatus = 2
 vim.o.breakindent = true
 vim.o.list = true
