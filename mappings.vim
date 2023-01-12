@@ -69,9 +69,6 @@ snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<Cr>
 " For changing choices in choiceNodes (not strictly necessary for a basic setup).
 imap <silent> <C-l> <Plug>luasnip-next-choice
 
-" vim-which-key
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
 " cheatsheet.nvim
 nnoremap <unique> <leader>? <cmd>Cheatsheet<CR>
 

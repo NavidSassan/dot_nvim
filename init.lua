@@ -168,9 +168,6 @@ vim.g.vimtex_view_method = 'zathura'
 -- norcalli/nvim-colorizer.lua
 require('colorizer').setup()
 
--- vim-airline
-vim.g.airline_powerline_fonts = 1
-
 -- nvim-navic
 local navic = require("nvim-navic")
 
@@ -488,12 +485,17 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
 
 -- lualine.nvim
 require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = '|',
-    section_separators = '',
-  },
+    options = {
+        icons_enabled = false,
+        theme = 'auto',
+        component_separators = '|',
+        section_separators = '',
+    },
+    -- sections = {
+    --     lualine_d = {
+    --         { navic.get_location, cond = navic.is_available },
+    --     }
+    -- }
 }
 
 -- Comment.nvim
