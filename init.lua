@@ -100,6 +100,34 @@ vim.g.vim_json_syntax_conceal = 0
 -- mason.nvim
 require('mason').setup()
 
+-- mason-nvim-dap.nvim
+require("mason-nvim-dap").setup()
+
+-- manual dap config
+local dap = require('dap')
+-- dap.adapters.php = {
+--   type = "executable",
+--   command = "node",
+--   args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" }
+-- }
+--
+-- dap.configurations.php = {
+--   {
+--     type = "php",
+--     request = "launch",
+--     name = "Listen for Xdebug",
+--     port = 9003,
+--     pathMappings = {
+--       ["/var/www/html/nextcloud"] = "${workspaceFolder}"
+--     }
+--   }
+-- }
+--
+
+-- nvim-dap-virtual-text
+require("nvim-dap-virtual-text").setup()
+
+
 -- mason-lspconfig.nvim
 require('mason-lspconfig').setup()
 
@@ -324,9 +352,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 
--- mason
-require('mason').setup()
-
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -423,6 +448,9 @@ require('telescope').setup {
     }
 }
 require('telescope').load_extension('fzf') -- Enable telescope fzf native
+
+-- telescope-dap.nvim
+require('telescope').load_extension('dap')
 
 -- telescope-project.nvim
 require'telescope'.load_extension('project')
@@ -563,6 +591,9 @@ require 'hex'.setup({
         return false
     end
 })
+
+-- nvim-dap-ui
+require("dapui").setup()
 
 -- oil.nvim
 require("oil").setup()
