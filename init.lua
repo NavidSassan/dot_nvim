@@ -558,3 +558,7 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 
 -- hex.nvim
 require 'hex'.setup()
+
+-- oil.nvim
+require("oil").setup()
+vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })

@@ -261,6 +261,22 @@ Commands:
     :HexAssemble, show "normal" view
     :HexToggle, toggle between views
 
+oil.nvim
+~~~~~~~~
+
+"A vim-vinegar like file explorer that lets you edit your filesystem like a normal Neovim buffer", basically better `vidir`.
+
+* `Repo <https://github.com/stevearc/oil.nvim>`_
+* Possible alternatives:
+
+    * `vim-vinegar <https://github.com/tpope/vim-vinegar>`_
+
+Keybinds:
+
+.. csv-table::
+
+    -, open parent directory
+
 
 template
 ~~~~~~~~
@@ -283,32 +299,3 @@ Commands:
 .. csv-table::
 
     1, 2
-
-todo
-----
-
-
-https://github.com/junegunn/vim-easy-align
-https://github.com/kyazdani42/nvim-web-devicons
-https://github.com/lambdalisue/suda.vim
-https://github.com/lervag/vimtex
-https://github.com/liuchengxu/vim-which-key
-https://github.com/machakann/vim-sandwich
-https://github.com/mbbill/undotree
-https://github.com/mechatroner/rainbow_csv
-https://github.com/michaeljsmith/vim-indent-object
-https://github.com/morhetz/gruvbox
-https://github.com/neovim/nvim-lspconfig
-https://github.com/norcalli/nvim-colorizer.lua
-https://github.com/nvim-lua/plenary.nvim
-https://github.com/nvim-lua/popup.nvim
-https://github.com/nvim-telescope/telescope.nvim
-https://github.com/nvim-treesitter/nvim-treesitter
-https://github.com/sudormrfbin/cheatsheet.nvim
-https://github.com/tpope/vim-abolish
-https://github.com/tpope/vim-fugitive
-https://github.com/tpope/vim-repeat
-https://github.com/tpope/vim-speeddating
-https://github.com/tpope/vim-vinegar
-
-* switch to packer.nvim
