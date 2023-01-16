@@ -557,7 +557,12 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 
 
 -- hex.nvim
-require 'hex'.setup()
+require 'hex'.setup({
+    -- function that runs on every buffer to determine if it's binary or not
+    is_binary_file = function()
+        return false
+    end
+})
 
 -- oil.nvim
 require("oil").setup()
