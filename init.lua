@@ -3,8 +3,22 @@ vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
--- todo
-vim.cmd('source $HOME/.config/nvim/plugins.vim')
+-- lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup("plugins")
+
+
 vim.cmd('source $HOME/.config/nvim/functions.vim')
 vim.cmd('source $HOME/.config/nvim/mappings.vim')
 
@@ -55,8 +69,7 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 
--- default open folds
-vim.o.foldlevelstart = 99
+vim.o.foldenable = false -- disable folding at startup
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 vim.o.updatetime = 300
@@ -97,12 +110,6 @@ vim.api.nvim_create_autocmd('FileType', {
 -- disable json conceal
 vim.g.vim_json_syntax_conceal = 0
 
--- mason.nvim
-require('mason').setup()
-
--- mason-nvim-dap.nvim
-require("mason-nvim-dap").setup()
-
 -- manual dap config
 local dap = require('dap')
 -- dap.adapters.php = {
@@ -124,13 +131,6 @@ local dap = require('dap')
 -- }
 --
 
--- nvim-dap-virtual-text
-require("nvim-dap-virtual-text").setup()
-
-
--- mason-lspconfig.nvim
-require('mason-lspconfig').setup()
-
 -- nvim-lspconfig
 -- install pyright for lsp
 -- npm config set prefix ~/.npm
@@ -146,46 +146,6 @@ vim.o.completeopt = 'menuone,noselect'
 -- lsp_signature.nvim
 -- lua require'lsp_signature'.on_attach()
 
--- " snippets.nvim
--- local snippets = require'snippets'
--- -- local U = require'snippets.utils'
--- snippets.snippets = {
---     -- The _global dictionary acts as a global fallback.
---     -- If a key is not found for the specific filetype, then
---     --  it will be lookup up in the _global dictionary.
---     _global = {
---         -- Insert a basic snippet, which is a string.
---         todo = "TODO(navid.sassan): ";
---         lfedit = "Edited by navid.sassan@linuxfabrik.ch on ${=os.date('%Y-%m-%d')}.";
---         time = [[${=os.date("%H:%M")}]];
---         date = [[${=os.date("%Y-%m-%d")}]];
---         datetime = [[${=os.date("%Y-%m-%d %H:%M")}]];
---         ddate = [[${=os.date("%Y.%m.%d")}]];
---         lldate = [[${=os.date("%a, %d.%m.%Y")}]];
---     };
---     python = {
---         ifmain = [[
--- if __name__ == '__main__':
---     main()
--- ]];
---         ifmain_exc = [[
--- if __name__ == '__main__':
---     try:
---         main()
---     except Exception as e:
---         print_exc()
---         sys.exit(STATE_UNKNOWN)
--- ]];
---     };
--- }
-
--- indent-blankline.nvim
-vim.g.indentLine_char = '▏'
-require('indent_blankline').setup {
-    use_treesitter = true,
-    show_current_context = true,
-    show_current_context_start = true,
-}
 
 -- mechatroner/rainbow_csv
 vim.g.disable_rainbow_key_mappings = 1
@@ -193,93 +153,8 @@ vim.g.disable_rainbow_key_mappings = 1
 -- vimtex
 vim.g.vimtex_view_method = 'zathura'
 
--- norcalli/nvim-colorizer.lua
-require('colorizer').setup()
-
--- nvim-navic
 local navic = require("nvim-navic")
-
--- nvim-treesitter
-require('nvim-treesitter.configs').setup {
-    -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = {
-        'bash',
-        'c',
-        'css',
-        'help',
-        'html',
-        'java',
-        'javascript',
-        'json',
-        'kotlin',
-        'lua',
-        'markdown',
-        'python',
-        'query',
-        'regex',
-        'rst',
-        'vim',
-        'yaml',
-    },
-
-    highlight = {
-        enable = true,
-    },
-    indent = {
-        enable = true,
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<c-backspace>',
-        },
-    },
-    context_commentstring = {
-        enable = true
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ['aa'] = '@parameter.outer',
-                ['ia'] = '@parameter.inner',
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['ac'] = '@class.outer',
-                ['ic'] = '@class.inner',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer',
-            },
-        },
-    },
-}
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 local on_attach = function(client, bufnr)
-
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -428,10 +303,6 @@ cmp.setup.cmdline(':', {
     )
 })
 
--- fidget.nvim
-require('fidget').setup()
-
-
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     pattern = '*/rst*',
     command = ':VtrSetCommand ./b-navid',
@@ -526,46 +397,13 @@ require('lualine').setup {
     -- }
 }
 
--- Comment.nvim
-require('Comment').setup()
-
--- gitsigns.nvim
-require('gitsigns').setup {
-  signs = {
-    add = { text = '+' },
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
-    changedelete = { text = '~' },
-  },
-}
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[e', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']e', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 
 
--- neodev.nvim
-require('neodev').setup()
-
 -- yanky.nvim
-require("yanky").setup({
-    ring = {
-        history_length = 20,
-    },
-    system_clipboard = {
-        sync_with_ring = false,
-    },
-    highlight = {
-        on_put = true,
-        on_yank = true,
-        timer = 500,
-    },
-    preserve_cursor_position = {
-        enabled = true,
-    },
-})
 vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
 vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
 -- vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
@@ -582,35 +420,3 @@ vim.keymap.set("i", ";", ";<c-g>u")
 
 
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
-
-
--- hex.nvim
-require 'hex'.setup({
-    -- function that runs on every buffer to determine if it's binary or not
-    is_binary_file = function()
-        return false
-    end
-})
-
--- nvim-dap-ui
-require("dapui").setup()
-
--- oil.nvim
-require("oil").setup({
-    keymaps = {
-        ["g?"] = "actions.show_help",
-        ["<CR>"] = "actions.select",
-        ["<C-s>"] = "actions.select_vsplit",
-        ["<C-h>"] = "actions.select_split",
-        ["<C-p>"] = "actions.preview",
-        -- ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
-        ["_"] = "actions.open_cwd",
-        ["`"] = "actions.cd",
-        ["~"] = "actions.tcd",
-        ["g."] = "actions.toggle_hidden",
-    },
-    use_default_keymaps = false,
-})
-vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })

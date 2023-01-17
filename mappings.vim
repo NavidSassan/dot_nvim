@@ -60,14 +60,7 @@ nnoremap <silent> <leader>gd <cmd>Gdiffsplit<cr>
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately
 " via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
 imap <silent> <c-k> <Plug>luasnip-expand-or-jump
-" -1 for jumping backwards.
-inoremap <silent> <c-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
-snoremap <silent> <c-k> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <c-j> <cmd>lua require('luasnip').jump(-1)<Cr>
-
-" For changing choices in choiceNodes (not strictly necessary for a basic setup).
-imap <silent> <C-l> <Plug>luasnip-next-choice
 
 " cheatsheet.nvim
 nnoremap <unique> <leader>? <cmd>Cheatsheet<CR>
@@ -76,10 +69,6 @@ nnoremap <unique> <leader>? <cmd>Cheatsheet<CR>
 noremap <silent> <leader>pa :VtrAttachToPane<cr>
 noremap <silent> <leader>r :update <bar> :VtrSendCommandToRunner<cr>
 noremap <silent> <leader>sc :VtrSetCommand<cr>
-
-" leap.nvim
-lua require('leap').set_default_keymaps()
-
 
 nnoremap <silent> <leader>t :write \| lua require'reload'.ansible()<cr>
 
