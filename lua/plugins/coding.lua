@@ -51,5 +51,10 @@ return {
     { 'junegunn/vim-easy-align', },
     { 'mechatroner/rainbow_csv', },
     { 'michaeljsmith/vim-indent-object', },
-    { 'numToStr/Comment.nvim', },
+    {
+        'numToStr/Comment.nvim',
+        config = function(plugin, opts)
+            require('Comment').setup(opts)
+        end
+    },
 }
