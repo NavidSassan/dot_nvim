@@ -420,3 +420,6 @@ vim.keymap.set("i", ";", ";<c-g>u")
 
 
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
+
+
+vim.opt.fillchars:append('diff:╱')

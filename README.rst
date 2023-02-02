@@ -278,6 +278,25 @@ Keybinds:
     -, open parent directory
 
 
+diffview.nvim
+~~~~~~~~~~~~~
+
+Nice git diffs with filelists.
+
+* `Repo <https://github.com/sindrets/diffview.nvim>`_
+
+
+Commands:
+
+.. csv-table::
+
+    1, 2
+    :DiffviewOpen origin/main...HEAD -- lua/diffview plugin, show diff between origin/main and HEAD for ``lua/diffview`` and ``plugin``
+    :DiffviewToggleFiles, toggle file panel
+    :DiffviewRefresh, Update stats and entries in the file list of the current Diffview
+    :DiffviewFileHistory include/this and/this :!but/not/this, Opens a new file history view that lists all commits that affected the given paths
+
+
 template
 ~~~~~~~~
 
