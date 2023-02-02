@@ -262,12 +262,17 @@ snippets.python = {
 snippets.php = {
 
     snippet({ trig = "elog" }, {
-        t("error_log('"),
+        t("error_log('[' . __FILE__ . ':' . __LINE__ . '] "),
         rep(1),
         t(": ' . print_r($"),
         i(1),
         t(', true));'),
         i(0),
+    }),
+
+    -- error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));
+    snippet({ trig = "ebt" }, {
+        t("error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));"),
     }),
 }
 
