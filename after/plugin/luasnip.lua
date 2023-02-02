@@ -260,7 +260,7 @@ snippets.python = {
 }
 
 snippets.php = {
-
+    -- error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r($object, true));
     snippet({ trig = "elog" }, {
         t("error_log('[' . __FILE__ . ':' . __LINE__ . '] "),
         rep(1),
