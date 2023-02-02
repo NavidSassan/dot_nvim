@@ -112,24 +112,42 @@ vim.g.vim_json_syntax_conceal = 0
 
 -- manual dap config
 local dap = require('dap')
--- dap.adapters.php = {
---   type = "executable",
---   command = "node",
---   args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" }
--- }
---
--- dap.configurations.php = {
---   {
---     type = "php",
---     request = "launch",
---     name = "Listen for Xdebug",
---     port = 9003,
---     pathMappings = {
---       ["/var/www/html/nextcloud"] = "${workspaceFolder}"
---     }
---   }
--- }
---
+
+dap.adapters.python = {
+    type = 'executable';
+    command = '/home/navid.sassan/.local/share/nvim/mason/packages/debugpy/venv/bin/python';
+    args = { '-m', 'debugpy.adapter' };
+}
+dap.configurations.python = {
+    {
+        type = 'python';
+        request = 'launch';
+        name = "Launch file";
+        program = "${file}";
+        pythonPath = function()
+            return '/usr/bin/python'
+        end;
+    },
+}
+
+dap.adapters.php = {
+    type = "executable",
+    command = "node",
+    args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" }
+}
+dap.configurations.php = {
+    {
+        type = "php",
+        request = "launch",
+        name = "Listen for Xdebug",
+        port = 9003,
+        pathMappings = {
+            -- ["/var/www/html/nextcloud"] = "${workspaceFolder}"
+            ["/usr/share/icingaweb2/modules/director"] = "${workspaceFolder}"
+        }
+    }
+}
+
 
 -- nvim-lspconfig
 -- install pyright for lsp
