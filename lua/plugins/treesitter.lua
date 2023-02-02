@@ -24,6 +24,9 @@ return {
                 'vim',
                 'yaml',
             },
+            autotag = {
+                enable = true,
+            },
             highlight = {
                 enable = true,
             },
