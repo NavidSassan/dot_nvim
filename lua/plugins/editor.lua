@@ -41,6 +41,10 @@ return {
     },
 
     {
+        'sindrets/diffview.nvim'
+    },
+
+    {
         'gbprod/yanky.nvim',
         opts = {
             ring = {

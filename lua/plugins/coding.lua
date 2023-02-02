@@ -57,4 +57,7 @@ return {
             require('Comment').setup(opts)
         end
     },
+
+
+    { 'windwp/nvim-ts-autotag', },
 }
