@@ -154,9 +154,10 @@ dap.configurations.php = {
 -- npm config set prefix ~/.npm
 -- npm i -g pyright
 -- add ~/.npm/bin to $PATH
-require'lspconfig'.pyright.setup{}
 require'lspconfig'.ansiblels.setup{}
 require'lspconfig'.esbonio.setup{}
+require'lspconfig'.phpactor.setup{}
+require'lspconfig'.pyright.setup{}
 
 -- nvim-compe
 vim.o.completeopt = 'menuone,noselect'
