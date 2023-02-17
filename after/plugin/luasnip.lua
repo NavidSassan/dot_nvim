@@ -270,9 +270,9 @@ snippets.php = {
         i(0),
     }),
 
-    -- error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));
+    -- error_log('[' . __FILE__ . ':' . __LINE__ . ']: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));
     snippet({ trig = "ebt" }, {
-        t("error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));"),
+        t("error_log('[' . __FILE__ . ':' . __LINE__ . ']: ' . print_r(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), true));"),
     }),
 }
 
