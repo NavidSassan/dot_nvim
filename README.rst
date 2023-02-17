@@ -296,6 +296,36 @@ Commands:
     :DiffviewRefresh, Update stats and entries in the file list of the current Diffview
     :DiffviewFileHistory include/this and/this :!but/not/this, Opens a new file history view that lists all commits that affected the given paths
 
+lspconfig
+~~~~~~~~~
+
+Helpers for configuring lsp servers.
+
+* `Repo <https://github.com/neovim/nvim-lspconfig>`_
+
+Keybinds:
+
+.. csv-table::
+
+    1, 2
+
+Commands:
+
+.. csv-table::
+
+    1, 2
+
+
+mason-lspconfig
+~~~~~~~~~~~~~~~
+
+"bridges mason.nvim with the lspconfig plugin - making it easier to use both plugins together."
+
+
+* `Repo <https://github.com/williamboman/mason-lspconfig.nvim>`_
+
+Note: Run ``:PylspInstall pylsp-mypy pyls-isort pylsp-rope`` after installing pylsp (see https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md).
+
 
 template
 ~~~~~~~~
