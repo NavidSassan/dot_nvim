@@ -45,6 +45,14 @@ return {
     },
 
     {
+        'pwntester/octo.nvim',
+        config = function(plugin, opts)
+            require("octo").setup(opts)
+        end
+    },
+
+
+    {
         'gbprod/yanky.nvim',
         opts = {
             ring = {
@@ -81,10 +89,13 @@ return {
 
     {
         "ggandor/leap.nvim",
+        enabled = false, -- TODO figure out good key maps
         event = "VeryLazy",
         config = function()
-            require("leap").add_default_mappings(true)
+            require("leap").add_default_mappings(false)
         end,
+        keys = {
+        },
     },
 
     { dir = '~/git/private/ansible.nvim', },
@@ -102,4 +113,18 @@ return {
     { 'nvim-telescope/telescope-project.nvim', },
     { 'nvim-telescope/telescope.nvim', },
     { 'nvim-telescope/telescope-dap.nvim', },
+
+    {
+        'chentoast/marks.nvim',
+        config = function(plugin, opts)
+            require("marks").setup(opts)
+        end
+    },
+
+    {
+        "folke/which-key.nvim",
+        config = function(plugin, opts)
+            require("which-key").setup(opts)
+        end
+    },
 }

@@ -44,7 +44,6 @@ return {
 
 
     { 'gaoDean/autolist.nvim', enabled = false },
-    { 'ggandor/leap.nvim', enabled = false }, -- TODO
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git', },
     { 'lambdalisue/suda.vim', },
     { 'chaoren/vim-wordmotion', },
