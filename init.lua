@@ -289,12 +289,15 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
 cmp.setup {
+    view = {
+        entries = "custom" -- can be "custom", "wildmenu" or "native"
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
-    mapping = cmp.mapping.preset.insert {
+    mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping(function(fallback)
@@ -312,10 +315,14 @@ cmp.setup {
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
-fallback()
+                fallback()
             end
-        end, { 'i', 's' }),
-    },
+        end,
+            {
+                'i',
+                's'
+            }),
+    }),
     sources = {
         { name = 'buffer' },
         { name = 'calc' },
