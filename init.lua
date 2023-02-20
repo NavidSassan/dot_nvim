@@ -230,7 +230,7 @@ local servers = {
     },
     texlab = {},
     pyright = {},
-    sumneko_lua = {
+    lua_ls = {
         settings = {
             Lua = {
                 runtime = {
@@ -264,7 +264,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+    ensure_installed = vim.tbl_keys(servers),
 }
 
 mason_lspconfig.setup_handlers {
