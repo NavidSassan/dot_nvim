@@ -327,6 +327,14 @@ mason-lspconfig
 Note: Run ``:PylspInstall pylsp-mypy pyls-isort pylsp-rope`` after installing pylsp (see https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md).
 
 
+lsp_signature.nvim
+~~~~~~~~~~~~~~~~~~
+
+Show function signature when you type
+
+* `Repo <https://github.com/ray-x/lsp_signature.nvim>`_
+
+
 template
 ~~~~~~~~
 

@@ -60,4 +60,10 @@ return {
 
 
     { 'windwp/nvim-ts-autotag', },
+    {
+        'ray-x/lsp_signature.nvim',
+        config = function(plugin, opts)
+            require('lsp_signature').setup(opts)
+        end
+    },
 }
