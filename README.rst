@@ -77,6 +77,12 @@ cmp-tmux
 * `Repo <https://github.com/andersevenrud/cmp-tmux>`_
 
 
+cmp-omni
+~~~~~~~~
+
+"nvim-cmp source for omnifunc." omnifunc allows other plugins to provide autocomplete options, for example vimtex.
+
+
 vim-wordmotion
 ~~~~~~~~~~~~~~
 

@@ -328,6 +328,7 @@ cmp.setup {
         { name = 'calc' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
+        { name = 'omni' },
         { name = 'tmux' },
     },
 }
