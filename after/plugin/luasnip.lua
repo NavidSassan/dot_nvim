@@ -71,6 +71,9 @@ local rep = require("luasnip.extras").rep
 
 local events = require "luasnip.util.events"
 
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
+
 -- local str_snip = function(trig, expanded)
 --   return ls.parser.parse_snippet({ trig = trig }, expanded)
 -- end
@@ -257,6 +260,26 @@ snippets.python = {
         t("=}''')"),
         i(0),
     }),
+}
+
+snippets.bib = {
+
+    snippet("web", fmta([[
+        @misc{<>,
+            title = {<>},
+            howpublished = {\url{<>}},
+            note = {Accessed: <>},
+        }
+      ]],
+        {
+            i(1),
+            i(2),
+            i(3),
+            f(function()
+                return os.date("%Y-%m-%d")
+            end, {}),
+        }
+    )),
 }
 
 snippets.php = {
