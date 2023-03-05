@@ -48,7 +48,16 @@ return {
     { 'gaoDean/autolist.nvim', enabled = false },
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git', },
     { 'lambdalisue/suda.vim', },
-    { 'chaoren/vim-wordmotion', },
+    {
+        'chaoren/vim-wordmotion',
+        enabled = false, -- somehow can't disable the default mappings...
+        config = function()
+            vim.g.wordmotion_nomap = true
+        end,
+        -- keys = {
+        --     { "W", '<Plug>WordMotion_w', mode= {'n', 'x', 'o'} },
+        -- },
+    },
     { 'junegunn/vim-easy-align', },
     { 'mechatroner/rainbow_csv', },
     { 'michaeljsmith/vim-indent-object', },
