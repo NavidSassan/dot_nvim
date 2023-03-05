@@ -89,12 +89,10 @@ return {
 
     {
         "ggandor/leap.nvim",
-        enabled = false, -- TODO figure out good key maps
         event = "VeryLazy",
-        config = function()
-            require("leap").add_default_mappings(false)
-        end,
         keys = {
+            { "z", '<Plug>(leap-forward-to)', mode= {'n', 'x', 'o'} },
+            { "Z", '<Plug>(leap-backward-to)', mode= {'n', 'x', 'o'} },
         },
     },
 

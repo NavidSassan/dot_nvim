@@ -135,11 +135,13 @@ leap.nvim
 
 "Leap is a general-purpose motion plugin"
 
+* `Repo <https://github.com/ggandor/leap.nvim>`_
 * Possible alternatives:
 
     * `lightspeed.nvim <https://github.com/ggandor/lightspeed.nvim>`_
     * `EasyMotion <https://github.com/easymotion/vim-easymotion>`_
     * `Hop <https://github.com/phaazon/hop.nvim>`_
+    * `Quick-Scope <https://github.com/unblevable/quick-scope>`_
 
 Keybinds:
 
