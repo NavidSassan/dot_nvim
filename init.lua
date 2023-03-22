@@ -406,7 +406,7 @@ cmp.setup.cmdline(':', {
 
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     pattern = '*/rst*',
-    command = ':VtrSetCommand ./b-navid',
+    command = ':VtrSetCommand ./b',
     group = vim.api.nvim_create_augroup('RstBNavid', {clear = true}),
 })
 
