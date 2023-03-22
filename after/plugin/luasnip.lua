@@ -299,6 +299,11 @@ snippets.php = {
     }),
 }
 
+snippets.rst = {
+    snippet({ trig = "..cb" }, {
+        t('.. code-block:: bash'),
+    }),
+}
 snippets.markdown = {
 
     snippet({ trig = "ul" }, {
