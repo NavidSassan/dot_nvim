@@ -89,7 +89,7 @@ command! DiffUnsaved call s:DiffUnsavedChanges()
 command Ans lcd ~/git/lf/ansinv
 command OldAns lcd ~/git/lf/old-ansible
 command Lfops lcd ~/git/lf/lfops
-command Rst lcd ~/Nextcloud/rst
+command Rst lcd ~/git/lf/rst
 command Mp lcd ~/git/lf/monitoring-plugins
 
 command! -nargs=1 AnsibleDoc lua require"ansible".display_ansible_doc(<f-args>)
