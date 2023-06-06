@@ -9,4 +9,17 @@ return {
         end
     },
     { 'williamboman/mason-lspconfig.nvim', },
+    {
+        'barreiroleo/ltex-extra.nvim',
+        ft = { "markdown", "tex" },
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function(plugin, opts)
+            require("ltex_extra").setup(opts)
+        end,
+        opts = {
+            -- string : relative or absolute paths to store dictionaries
+            -- e.g. subfolder in current working directory: ".ltex"
+            path = vim.fn.expand("~") .. "/.local/share/ltex",
+        },
+    }
 }
