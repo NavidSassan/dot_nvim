@@ -12,8 +12,9 @@ return {
     },
 
     {
-        'morhetz/gruvbox',
+        'ellisonleao/gruvbox.nvim',
         lazy = true,
+        priority = 1000,
     },
 
     {

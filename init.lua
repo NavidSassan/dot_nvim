@@ -26,7 +26,7 @@ vim.cmd('source $HOME/.config/nvim/mappings.vim')
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[syntax enable]])
 
-vim.cmd([[colorscheme tokyonight-moon]])
+vim.cmd([[colorscheme gruvbox]])
 
 vim.o.background = 'dark'
 
