@@ -265,10 +265,10 @@ snippets.python = {
 snippets.bib = {
 
     snippet("web", fmta([[
-        @misc{<>,
+        @online{<>,
             title = {<>},
-            howpublished = {\url{<>}},
-            note = {Accessed: <>},
+            url = {<>},
+            urldate = {<>},
         }
       ]],
         {
