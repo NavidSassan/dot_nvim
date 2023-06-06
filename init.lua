@@ -213,8 +213,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.g.disable_rainbow_key_mappings = 1
 
 -- vimtex
--- vim.g.vimtex_quickfix_autoclose_after_keystrokes = 5
--- vim.g.vimtex_quickfix_method = 'pplatex'
+vim.g.vimtex_quickfix_enabled = 0
 vim.g.vimtex_view_method = 'zathura'
 
 local navic = require("nvim-navic")
