@@ -260,6 +260,15 @@ snippets.python = {
         t("=}''')"),
         i(0),
     }),
+
+    snippet("pd", fmta([[
+        print(f'<>: {<>}')
+      ]],
+        {
+            rep(1),
+            i(1),
+        }
+    )),
 }
 
 snippets.bib = {
