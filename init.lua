@@ -413,8 +413,9 @@ cmp.setup {
                         bufs[vim.api.nvim_win_get_buf(win)] = true
                     end
                     return vim.tbl_keys(bufs)
-                end
-            }
+                end,
+                keyword_pattern = [[\k\+]], -- required so that umlaute do not split the words
+            },
         },
         { name = 'calc' },
         { name = 'luasnip' },
