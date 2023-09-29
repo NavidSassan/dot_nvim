@@ -60,6 +60,7 @@ return {
     },
     { 'junegunn/vim-easy-align', },
     { 'mechatroner/rainbow_csv', },
+    { 'chrisbra/csv.vim' },
     { 'michaeljsmith/vim-indent-object', },
     {
         'numToStr/Comment.nvim',
@@ -76,4 +77,11 @@ return {
             require('lsp_signature').setup(opts)
         end
     },
+
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true,
+        version = "*" -- only stable versions
+    }
 }
