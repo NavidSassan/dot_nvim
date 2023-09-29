@@ -546,3 +546,7 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 
 
 vim.opt.fillchars:append('diff:╱')
+
+
+
+vim.g.nvim_ghost_autostart = 0
