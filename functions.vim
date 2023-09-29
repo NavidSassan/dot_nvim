@@ -99,3 +99,21 @@ function! s:SortLinesOpFunc(...)
 endfunction
 
 nnoremap <silent> gs :<C-u>set operatorfunc=<SID>SortLinesOpFunc<CR>g@
+
+
+set diffexpr=MyDiff()
+function! MyDiff()
+    let opt = ""
+    if exists("g:diffopts") && g:diffopts != ""
+        let opt = g:diffopts .. " "
+    endif
+    if &diffopt =~ "icase"
+        let opt = opt .. "-i "
+    endif
+    if &diffopt =~ "iwhite"
+        let opt = opt .. "-b "
+    endif
+    echom "!diff -a --binary " .. opt .. v:fname_in .. " " .. v:fname_new .. " > " .. v:fname_out
+    silent execute "!diff -a --binary " .. opt .. v:fname_in .. " " .. v:fname_new .. " > " .. v:fname_out
+    redraw!
+endfunction
