@@ -113,6 +113,27 @@ vim.g.vim_json_syntax_conceal = 0
 -- manual dap config
 local dap = require('dap')
 
+dap.adapters.lldb = {
+    type = 'executable',
+    command = '/usr/bin/lldb-vscode',
+    name = 'lldb'
+}
+dap.configurations.cpp = {
+    {
+        name = 'Launch',
+        type = 'lldb',
+        request = 'launch',
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+    },
+}
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
 dap.adapters.python = {
     type = 'executable';
     command = '/home/navid.sassan/.local/share/nvim/mason/packages/debugpy/venv/bin/python';
