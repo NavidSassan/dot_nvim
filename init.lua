@@ -28,6 +28,8 @@ vim.cmd([[syntax enable]])
 
 vim.cmd([[colorscheme gruvbox]])
 
+vim.cmd([[packadd cfilter]])
+
 vim.o.background = 'dark'
 
 vim.o.cursorcolumn = true
@@ -521,7 +523,6 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     end,
     group = vim.api.nvim_create_augroup('Ansible', {clear = true}),
 })
-
 
 local function hello()
   return [[hello world]]
