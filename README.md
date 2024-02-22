@@ -13,6 +13,7 @@ Always WIP.
 
 Possible alternatives:
 
+* [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 
 Keymappings:
