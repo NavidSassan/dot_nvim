@@ -10,11 +10,19 @@ return {
         main = "ibl",
         event = "BufReadPre",
         opts = {
-            char = '▏',
-            filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
-            show_current_context = true,
-            show_current_context_start = true,
-            use_treesitter = true,
+            indent = {
+                char = '▏',
+            },
+            exclude = {
+                filetypes = {
+                    "Trouble",
+                    "alpha",
+                    "dashboard",
+                    "help",
+                    "lazy",
+                    "neo-tree",
+                },
+            },
         },
     },
 
