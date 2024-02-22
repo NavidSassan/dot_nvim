@@ -67,6 +67,7 @@ indent_blankline
 * Possible alternatives:
 
     * `indentLine <https://github.com/Yggdroot/indentLine>`_
+    * `mini.indentscope https://github.com/echasnovski/mini.indentscope>`_
 
 
 cmp-tmux
