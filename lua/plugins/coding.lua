@@ -42,8 +42,6 @@ return {
     },
 
     { 'machakann/vim-sandwich' },
-    { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-
 
     { 'gaoDean/autolist.nvim', enabled = false },
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git', },
@@ -62,11 +60,27 @@ return {
     { 'mechatroner/rainbow_csv', },
     { 'chrisbra/csv.vim' },
     { 'michaeljsmith/vim-indent-object', },
+
     {
         'numToStr/Comment.nvim',
-        config = function(plugin, opts)
-            require('Comment').setup(opts)
-        end
+        main = 'Comment',
+        opts = {
+            pre_hook = function()
+                require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+            end,
+        },
+        dependencies = {
+            {
+                'JoosepAlviste/nvim-ts-context-commentstring',
+                enabled = false,
+                init = function()
+                    vim.g.skip_ts_context_commentstring_module = true
+                end,
+                opts = {
+                    enable_autocmd = false,
+                },
+            },
+        },
     },
 
 

@@ -40,9 +40,6 @@ return {
                     node_decremental = '<C-backspace>',
                 },
             },
-            context_commentstring = {
-                enable = true
-            },
             textobjects = {
                 select = {
                     enable = true,
