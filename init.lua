@@ -565,6 +565,9 @@ vim.keymap.set("i", ",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
+-- easier indenting, automatically re-selects the previous selection
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
 
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 
