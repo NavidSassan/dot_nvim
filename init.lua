@@ -55,6 +55,7 @@ vim.o.listchars = 'tab:--→,trail:•,nbsp:␣,extends:→,precedes:←'
 vim.o.mouse = 'a'
 vim.opt.nrformats:append('alpha')
 vim.o.number = true
+vim.o.relativenumber = true
 vim.o.ruler = true
 vim.o.showbreak = '↪ '
 vim.o.splitbelow = true
