@@ -9,7 +9,6 @@ return {
                 'bash',
                 'c',
                 'css',
-                'help',
                 'html',
                 'java',
                 'javascript',
@@ -23,6 +22,7 @@ return {
                 'regex',
                 'rst',
                 'vim',
+                'vimdoc',
                 'yaml',
             },
             highlight = {
