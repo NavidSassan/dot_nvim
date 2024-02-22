@@ -446,7 +446,7 @@ cmp.setup.cmdline(':', {
 })
 
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
-    pattern = '*/rst*',
+    pattern = '/*/rst*',
     command = ':VtrSetCommand ./b',
     group = vim.api.nvim_create_augroup('RstBNavid', {clear = true}),
 })
@@ -509,7 +509,7 @@ vim.keymap.set('n', '<leader>fd', require'telescope'.extensions.project.project,
 
 -- set correct filetype
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
-    pattern = '*/Nextcloud/it/ssh/configs/*',
+    pattern = '/*/Nextcloud/IT/ssh/configs/*',
     callback = function()
         vim.o.filetype = 'sshconfig'
     end,
@@ -517,7 +517,7 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
 })
 
 vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
-    pattern = '*/git/lf/lfops/**/*.yml',
+    pattern = '/*/git/lf/lfops/**/*.yml',
     callback = function()
         vim.o.filetype = 'yaml.ansible'
     end,
