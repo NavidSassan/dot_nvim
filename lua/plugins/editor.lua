@@ -131,6 +131,7 @@ return {
     { 'nvim-telescope/telescope-project.nvim', },
     { 'nvim-telescope/telescope.nvim', },
     { 'nvim-telescope/telescope-dap.nvim', },
+    { 'itchyny/vim-qfedit', },
 
     {
         'chentoast/marks.nvim',
