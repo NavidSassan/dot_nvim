@@ -117,3 +117,13 @@ function! MyDiff()
     silent execute "!diff -a --binary " .. opt .. v:fname_in .. " " .. v:fname_new .. " > " .. v:fname_out
     redraw!
 endfunction
+
+function! s:Umlaute()
+    %s/Ae/Ä/gce
+    %s/ae/ä/gce
+    %s/oe/ö/gce
+    %s/Oe/Ö/gce
+    %s/ue/ü/gce
+    %s/Ue/Ü/gce
+endfunction
+command Umlaute call s:Umlaute()
