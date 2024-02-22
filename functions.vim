@@ -1,6 +1,3 @@
-" This file is managed by Ansible - do not edit
-" 2021111901
-
 function! s:Rmtw()
     let l:winview = winsaveview()
     let l:oldsearch = @/
@@ -86,20 +83,12 @@ function! s:DiffUnsavedChanges()
 endfunction
 command! DiffUnsaved call s:DiffUnsavedChanges()
 
-command Ans lcd ~/git/lf/ansinv
-command OldAns lcd ~/git/lf/old-ansible
-command Lfops lcd ~/git/lf/lfops
-command Rst lcd ~/git/lf/rst
-command Mp lcd ~/git/lf/monitoring-plugins
-
 command! -nargs=1 AnsibleDoc lua require"ansible".display_ansible_doc(<f-args>)
 
 function! s:SortLinesOpFunc(...)
     '[,']sort
 endfunction
-
 nnoremap <silent> gs :<C-u>set operatorfunc=<SID>SortLinesOpFunc<CR>g@
-
 
 set diffexpr=MyDiff()
 function! MyDiff()

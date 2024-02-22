@@ -14,7 +14,7 @@ return {
         ft = { "markdown", "tex" },
         dependencies = { "neovim/nvim-lspconfig" },
         config = function(plugin, opts)
-            require("ltex_extra").setup(opts)
+            -- require("ltex_extra").setup(opts) todo: call this correctly according to the README
         end,
         opts = {
             -- string : relative or absolute paths to store dictionaries
