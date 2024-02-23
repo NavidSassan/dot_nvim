@@ -232,7 +232,7 @@ TODO: integrate in statusline.
 "A Neovim plugin for setting the commentstring option based on the cursor location in the file. The location is checked via treesitter queries."
 
 Comment.nvim has in-built treesitter support, but recommends to use this plugin for "advanced use cases".
-Disabled for now, as I could not find the advanced use case.
+Helped me prevent `Comment.nvim: nil` messages.
 
 
 ### [oil.nvim](https://github.com/stevearc/oil.nvim)

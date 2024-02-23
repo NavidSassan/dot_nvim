@@ -72,7 +72,6 @@ return {
         dependencies = {
             {
                 'JoosepAlviste/nvim-ts-context-commentstring',
-                enabled = false,
                 init = function()
                     vim.g.skip_ts_context_commentstring_module = true
                 end,
