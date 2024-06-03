@@ -50,8 +50,8 @@ return {
                         ['ia'] = '@parameter.inner',
                         ['af'] = '@function.outer',
                         ['if'] = '@function.inner',
-                        ['ac'] = '@class.outer',
-                        ['ic'] = '@class.inner',
+                        ['ac'] = '@block.outer',
+                        ['ic'] = '@block.inner',
                     },
                 },
                 move = {
