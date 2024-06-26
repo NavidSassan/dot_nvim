@@ -34,10 +34,10 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = '<C-space>',
-                    node_incremental = '<C-space>',
+                    init_selection = 'gnn',
+                    node_incremental = '<M-=>',
                     scope_incremental = '<C-s>',
-                    node_decremental = '<C-backspace>',
+                    node_decremental = '<M-->',
                 },
             },
             textobjects = {
