@@ -60,6 +60,7 @@ vim.o.ruler = true
 vim.o.showbreak = '↪ '
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.o.splitkeep = 'screen'
 vim.o.termguicolors = true
 vim.o.timeoutlen = 500
 vim.o.wildmode = 'longest,list,full'
@@ -525,9 +526,6 @@ vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
     group = vim.api.nvim_create_augroup('Ansible', {clear = true}),
 })
 
-local function hello()
-  return [[hello world]]
-end
 -- lualine.nvim
 require('lualine').setup {
     options = {
@@ -577,3 +575,12 @@ vim.opt.fillchars:append('diff:╱')
 
 
 vim.g.nvim_ghost_autostart = 0
+
+
+
+function Send_line()
+    local current_line = vim.api.nvim_get_current_line()
+    local command = string.format("~/git/lf/scripts/sendkeys --string '%s' --delay 0.05", current_line)
+    os.execute(command)
+end
+vim.cmd('command SendLine lua Send_line()')
