@@ -61,7 +61,16 @@ return {
     },
 
     {
-        'sindrets/diffview.nvim'
+        'sindrets/diffview.nvim',
+        -- lazy = false,
+        cmd = {
+            'DiffviewOpen',
+            'DiffviewFileHistory',
+        },
+        keys = {
+            { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Open Diff View" },
+            { "<leader>dvf", "<cmd>DiffviewFileHistory<cr>", desc = "Open File History Diff View" },
+        },
     },
 
     {
