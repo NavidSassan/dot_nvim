@@ -147,6 +147,7 @@ return {
         config = function(plugin, opts)
             require("marks").setup(opts)
         end
+        -- TODO: disable default mappings, only map what i need
     },
 
     {

@@ -71,6 +71,10 @@ Keymappings:
 
 Nice git diffs with filelists.
 
+Possible alternatives:
+
+* [Gistory.vim](https://github.com/Tarmean/Gistory.vim)
+
 Commands:
 
 | Command                                                     | Action                                                                             |
@@ -276,6 +280,10 @@ Commands:
 
 Provides a yank-ring, allowing cycling through the yank history on paste. Also highlights yanks and pastes.
 
+Possible alternatives:
+
+* [nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
+
 Keymappings:
 
 | Key     | Action                                 |
@@ -288,7 +296,7 @@ Keymappings:
 
 "More useful word motions for Vim". Makes the default word motions smaller, for CamelCase, snake_case, etc.
 
-TODO: replace with https://github.com/backdround/neowords.nvim?
+TODO: replace with https://github.com/backdround/neowords.nvim? or https://github.com/chrisgrieser/nvim-spider?
 
 
 ### [template](link-to-repo)
@@ -310,3 +318,21 @@ Commands:
 | Command | Action |
 | ---     | ---    |
 | 1       | 2      |
+
+
+
+## Plugins that I am considering
+
+Also see my [neovim todo](https://github.com/stars/NavidSassan/lists/neovim-todo) GitHub stars.
+
+### https://github.com/gbprod/substitute.nvim
+
+allows pasting text without storing the overwritten text (at least that's what I'm hoping for)
+
+possbile alternatives:
+
+* https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md
+
+
+
+## Plugins that I have decided against using

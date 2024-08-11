@@ -1,6 +1,3 @@
-" This file is managed by Ansible - do not edit
-" 2021111901
-
 noremap <silent> <leader>dp V:diffput<cr>
 noremap <silent> <leader>do V:diffget<cr>
 
@@ -72,4 +69,5 @@ noremap <silent> <leader>sc :VtrSetCommand<cr>
 
 nnoremap <silent> <leader>t :write \| lua require'reload'.ansible()<cr>
 
-nnoremap <silent> <leader>dt :ToggleDiag<cr>
+nnoremap <silent> <leader>tc :tabclose<cr>
+nnoremap <silent> <leader>tn :tabnew<cr>
