@@ -121,12 +121,12 @@ Possible alternatives:
 
 Keymappings:
 
-| Key         | Action                                                                                        |
-| ---         | ---                                                                                           |
-| `<leader>z` | followed by 2 characters offers an selection to jump to one of the matches (after the cursor) |
-| `<leader>Z` | same as `leader<z>`, but before the cursor                                                    |
-| `z`         | same as `s`, but for operator-pending mode, for example after a `d`                           |
-| `Z`         | same as `z`, but before the cursor                                                            |
+| Key | Action                                                                                        |
+| --- | ---                                                                                           |
+| `r` | followed by 2 characters offers an selection to jump to one of the matches (after the cursor) |
+| `R` | same as `r`, but backwards / before the cursor                                                |
+| `r` | same as `r`, but for operator-pending mode, for example after a `d`                           |
+| `R` | same as `R`, but backwards and for operator-pending mode, for example after a `d`             |
 
 TODO: last two keybinds do not work
 

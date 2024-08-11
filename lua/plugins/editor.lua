@@ -120,8 +120,8 @@ return {
         "ggandor/leap.nvim",
         event = "VeryLazy",
         keys = {
-            { "<leader>z", '<Plug>(leap-forward-to)', mode= {'n', 'x', 'o'} },
-            { "<leader>Z", '<Plug>(leap-backward-to)', mode= {'n', 'x', 'o'} },
+            { "r", '<Plug>(leap-forward-to)', mode= {'n', 'x', 'o'} },
+            { "R", '<Plug>(leap-backward-to)', mode= {'n', 'x', 'o'} },
         },
     },
 
