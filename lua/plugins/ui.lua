@@ -34,5 +34,5 @@ return {
     -- icons
     { "nvim-tree/nvim-web-devicons", lazy = true },
 
-    { 'norcalli/nvim-colorizer.lua', },
+    { 'NvChad/nvim-colorizer.lua', },
 }
