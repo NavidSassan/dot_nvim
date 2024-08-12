@@ -74,14 +74,6 @@ return {
     },
 
     {
-        'pwntester/octo.nvim',
-        config = function(plugin, opts)
-            require("octo").setup(opts)
-        end
-    },
-
-
-    {
         'gbprod/yanky.nvim',
         opts = {
             ring = {
