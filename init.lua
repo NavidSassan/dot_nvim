@@ -301,17 +301,7 @@ local servers = {
         },
     },
     phpactor = {},
-    pylsp = {
-        settings = {
-            pylsp = {
-                plugins = {
-                    pycodestyle = {
-                        enabled = false,
-                    }
-                }
-            }
-        },
-    },
+    ruff = {},
     texlab = {},
     pyright = {},
     lua_ls = {
