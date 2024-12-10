@@ -569,3 +569,43 @@ function Send_line()
     os.execute(command)
 end
 vim.cmd('command SendLine lua Send_line()')
+
+
+function Go_to_ansible_role_file(sub_path)
+    -- Get the full path of the current file
+    local current_path = vim.fn.expand('%:p')
+    -- Find the roles directory in the path
+    local roles_path = current_path:match("(.*roles/[^/]+)")
+
+    if roles_path then
+        -- Construct the full path to the target file
+        local target_path = roles_path .. '/' .. sub_path
+
+        -- Open the target file if it exists, otherwise print an error
+        if vim.fn.filereadable(target_path) == 1 then
+            vim.cmd('edit ' .. target_path)
+        else
+            print("File does not exist: " .. target_path)
+        end
+    else
+        print("Not inside a role directory.")
+    end
+end
+
+function Open_oil_in_ansible_role_dir()
+    local current_path = vim.fn.expand('%:p')
+    local roles_path = current_path:match("(.*roles/[^/]+)")
+
+    if roles_path then
+        -- Open Oil in the role directory
+        vim.cmd('Oil ' .. roles_path)
+    else
+        print("Not inside a role directory.")
+    end
+end
+
+-- Key mappings to navigate to specific files within the role
+vim.api.nvim_set_keymap('n', '<leader>jd', ':lua Go_to_ansible_role_file("defaults/main.yml")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>jr', ':lua Go_to_ansible_role_file("README.md")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>jt', ':lua Go_to_ansible_role_file("tasks/main.yml")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>jo', ':lua Open_oil_in_ansible_role_dir()<CR>', { noremap = true, silent = true })
