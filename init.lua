@@ -411,6 +411,10 @@ cmp.setup {
                 keyword_pattern = [[\k\+]], -- required so that umlaute do not split the words
             },
         },
+        {
+            name = 'lazydev',
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        },
         { name = 'calc' },
         { name = 'luasnip' },
         { name = 'nvim_lsp' },

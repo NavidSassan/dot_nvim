@@ -1,6 +1,9 @@
 return {
     { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim', },
-    { 'folke/neodev.nvim', },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+    },
     { 'neovim/nvim-lspconfig', },
     {
         'williamboman/mason.nvim',

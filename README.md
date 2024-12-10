@@ -174,9 +174,9 @@ Possible alternatives:
 Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pylsp (see [README](https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md)).
 
 
-### [neodev.nvim](https://github.com/folke/neodev.nvim)
+### [lazydev.nvim](https://github.com/folke/lazydev.nvim)
 
-"Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API."
+"lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries."
 
 
 ### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
