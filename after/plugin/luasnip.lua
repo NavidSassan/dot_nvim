@@ -154,7 +154,7 @@ snippets.all = {
 
     snippet({ trig = "ddate", desc="dot date" }, {
         f(function()
-            return os.date("%Y.%m.%d")
+            return os.date("%d.%m.%Y")
         end, {}),
     }),
 
@@ -330,6 +330,18 @@ snippets.markdown = {
         i(0),
     }),
 
+}
+
+snippets.javascript = {
+    -- error_log('[' . __FILE__ . ':' . __LINE__ . '] object: ' . print_r($object, true));
+    snippet({ trig = "clog" }, {
+        t('console.log(`'),
+        rep(1),
+        t(': ${'),
+        i(1),
+        t('}`);'),
+        i(0),
+    }),
 }
 
 -- table.insert(snippets.all, ls.parser.parse_snippet("example", "-- $TM_FILENAME\nfunc $1($2) $3 {\n\t$0\n}"))
