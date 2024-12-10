@@ -26,11 +26,11 @@ vim.cmd('source $HOME/.config/nvim/mappings.vim')
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[syntax enable]])
 
-vim.cmd([[colorscheme nightfox]])
+vim.cmd([[colorscheme carbonfox]])
+-- vim.cmd([[colorscheme dayfox]])
+-- vim.o.background = 'dark'
 
 vim.cmd([[packadd cfilter]])
-
-vim.o.background = 'dark'
 
 vim.o.cursorcolumn = true
 vim.o.cursorline = true
