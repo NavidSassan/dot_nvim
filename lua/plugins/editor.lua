@@ -148,13 +148,4 @@ return {
             require("which-key").setup(opts)
         end
     },
-    -- disabled for now, as disabling autostart does not seem to work
-    -- {
-    --     'subnut/nvim-ghost.nvim',
-    --     config = function(plugin, opts)
-    --         vim.g.nvim_ghost_autostart = 0
-    --
-    --         -- require("nvim-ghost").setup(opts)
-    --     end
-    -- }
 }

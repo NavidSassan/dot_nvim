@@ -563,11 +563,6 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.fillchars:append('diff:╱')
 
 
-
-vim.g.nvim_ghost_autostart = 0
-
-
-
 function Send_line()
     local current_line = vim.api.nvim_get_current_line()
     local command = string.format("~/git/lf/scripts/sendkeys --string '%s' --delay 0.05", current_line)
