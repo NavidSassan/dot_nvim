@@ -160,7 +160,11 @@ snippets.all = {
 
     snippet({ trig = "lldate", desc="life-log date" }, {
         f(function()
-            return os.date("%a, %d.%m.%Y")
+            local old = os.setlocale(nil, "time")     -- remember current LC_TIME
+            os.setlocale("C", "time")                 -- or "en_US.UTF-8" if installed
+            local s = os.date("%a, %d.%m.%Y")
+            os.setlocale(old, "time")                 -- restore
+            return s
         end, {}),
     }),
 
