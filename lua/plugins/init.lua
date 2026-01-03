@@ -479,6 +479,7 @@ return {
     { 'tpope/vim-fugitive', cmd = { "Git", "G", "Gdiffsplit", "Gclog", "Gread", "Gwrite" } },
     { 'tpope/vim-speeddating', keys = { '<C-a>', '<C-x>' } },
     { 'lervag/vimtex', ft = "tex" },
+    { 'stsewd/sphinx.nvim', ft = "rst", build = ":UpdateRemotePlugins" },
     {
         'nvim-telescope/telescope.nvim',
         cmd = "Telescope",
