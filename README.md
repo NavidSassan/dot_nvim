@@ -263,17 +263,6 @@ Keymappings:
 | `-` | open parent directory |
 
 
-### [toggle-lsp-diagnostics.nvim](https://github.com/WhoIsSethDaniel/toggle-lsp-diagnostics.nvim)
-
-"A Neovim plugin for toggling the LSP diagnostics. Turn all diagnostics on/off or turn on/off individual features of diagnostics (virtual text, underline, signs, etc...)."
-
-Commands:
-
-| Command       | Action                        |
-| ---           | ---                           |
-| `:ToggleDiag` | Toggle ALL diagnostics on/off |
-
-
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
 
 "A simple, vimscript only, command runner for sending commands from vim to tmux." My fork of <https://github.com/christoomey/vim-tmux-runner>.

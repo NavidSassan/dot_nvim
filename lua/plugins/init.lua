@@ -103,7 +103,6 @@ return {
     { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
 
     -- LSP
-    { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' },
     { "folke/lazydev.nvim", ft = "lua" },
     {
         'neovim/nvim-lspconfig',
