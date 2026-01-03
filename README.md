@@ -174,6 +174,15 @@ Possible alternatives:
 Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pylsp (see [README](https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md)).
 
 
+#### ltex LSP
+
+* Grammar/Spell Checker
+* ltex is configured with `autostart = false` because it's resource-intensive (runs LanguageTool via Java). To use it:
+
+1. `:LspStart ltex` - Start the LSP server manually
+2. `:Lazy load ltex-extra.nvim` - (Optional) Load extra features for dictionary management
+
+
 ### [lazydev.nvim](https://github.com/folke/lazydev.nvim)
 
 "lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries."
