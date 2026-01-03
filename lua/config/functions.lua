@@ -190,13 +190,4 @@ vim.api.nvim_create_user_command('AnsibleDoc', function(opts)
     end
 end, { nargs = 1 })
 
--- Set up sort operator
-function M.sort_lines_opfunc()
-    vim.cmd("'[,']sort")
-end
-vim.keymap.set('n', 'gs', function()
-    vim.o.operatorfunc = "v:lua.require'config.functions'.sort_lines_opfunc"
-    return 'g@'
-end, { expr = true, silent = true })
-
 return M

@@ -34,9 +34,6 @@ end, { silent = true, desc = 'Copy file:line to clipboard' })
 map('x', 'il', 'g_o^o', { desc = 'Inner line' })
 map('o', 'il', '<cmd>normal vil<CR>', { silent = true, desc = 'Inner line' })
 
--- Visual mode sort
-map('x', 'gs', ':sort<cr>', { silent = true, desc = 'Sort selection' })
-
 -- Select pasted text
 map('n', 'gp', function()
     return '`[' .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. '`]'

@@ -263,6 +263,21 @@ Keymappings:
 | `-` | open parent directory |
 
 
+### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
+
+Text edit operators for replace, exchange, and sort.
+
+| Key | Action |
+| --- | --- |
+| `gz{motion}` | Replace with register |
+| `gzz` | Replace line |
+| `gz` (visual) | Replace selection |
+| `gx{motion}` | Exchange text (use twice to swap) |
+| `gxx` | Exchange line |
+| `gs{motion}` | Sort text |
+| `gss` | Sort line (characters) |
+
+
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
 
 "A simple, vimscript only, command runner for sending commands from vim to tmux." My fork of <https://github.com/christoomey/vim-tmux-runner>.
@@ -322,15 +337,6 @@ Commands:
 ## Plugins that I am considering
 
 Also see my [neovim todo](https://github.com/stars/NavidSassan/lists/neovim-todo) GitHub stars.
-
-### https://github.com/gbprod/substitute.nvim
-
-allows pasting text without storing the overwritten text (at least that's what I'm hoping for)
-
-possbile alternatives:
-
-* https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md
-
 
 
 ## Plugins that I have decided against using

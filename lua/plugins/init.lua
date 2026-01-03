@@ -511,6 +511,15 @@ return {
 
     -- Coding
     { 'machakann/vim-sandwich', event = "VeryLazy" },
+    {
+        'echasnovski/mini.operators',
+        keys = { 'gz', 'gx', 'gs' },
+        opts = {
+            replace = { prefix = 'gz' },
+            multiply = { prefix = '' },
+            evaluate = { prefix = '' },
+        },
+    },
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git' },
     { 'lambdalisue/suda.vim' },
     { 'junegunn/vim-easy-align', keys = { { 'ga', mode = { 'n', 'x' } } } },
