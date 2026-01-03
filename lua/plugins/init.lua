@@ -1,0 +1,559 @@
+return {
+
+    -- Colorschemes
+    { "folke/tokyonight.nvim", lazy = true, priority = 1000, opts = { style = "moon" } },
+    { 'EdenEast/nightfox.nvim', lazy = true, priority = 1000 },
+    { 'ellisonleao/gruvbox.nvim', lazy = true, priority = 1000 },
+    { 'shaunsingh/solarized.nvim', lazy = true, priority = 1000 },
+
+    -- Utilities
+    { "nvim-lua/plenary.nvim", lazy = true },
+
+    -- UI
+    {
+        "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
+        dependencies = { "SmiteshP/nvim-navic" },
+        config = function()
+            local navic = require("nvim-navic")
+            require('lualine').setup {
+                options = {
+                    icons_enabled = true,
+                    theme = 'auto',
+                    component_separators = '|',
+                    section_separators = '',
+                },
+                sections = {
+                    lualine_c = {
+                        { 'filename' },
+                        { navic.get_location, cond = navic.is_available },
+                    },
+                },
+            }
+        end,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        event = "BufReadPre",
+        opts = {
+            indent = { char = '▏' },
+            exclude = {
+                filetypes = { "Trouble", "alpha", "dashboard", "help", "lazy", "neo-tree" },
+            },
+        },
+    },
+    { "SmiteshP/nvim-navic", lazy = true },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { 'NvChad/nvim-colorizer.lua', event = "BufReadPre", opts = {} },
+
+    -- Treesitter
+    {
+        "nvim-treesitter/nvim-treesitter",
+        version = false,
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+        opts = {
+            ensure_installed = {
+                'bash', 'c', 'css', 'html', 'java', 'javascript', 'json',
+                'kotlin', 'lua', 'markdown', 'php', 'python', 'query',
+                'regex', 'rst', 'vim', 'vimdoc', 'yaml',
+            },
+            highlight = { enable = true },
+            indent = { enable = true },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = 'gnn',
+                    node_incremental = '<M-=>',
+                    scope_incremental = '<C-s>',
+                    node_decremental = '<M-->',
+                },
+            },
+            textobjects = {
+                select = {
+                    enable = true,
+                    lookahead = true,
+                    keymaps = {
+                        ['aa'] = '@parameter.outer',
+                        ['ia'] = '@parameter.inner',
+                        ['af'] = '@function.outer',
+                        ['if'] = '@function.inner',
+                        ['ac'] = '@block.outer',
+                        ['ic'] = '@block.inner',
+                    },
+                },
+                move = {
+                    enable = true,
+                    set_jumps = true,
+                    goto_next_start = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
+                    goto_next_end = { [']M'] = '@function.outer', [']['] = '@class.outer' },
+                    goto_previous_start = { ['[m'] = '@function.outer', ['[['] = '@class.outer' },
+                    goto_previous_end = { ['[M'] = '@function.outer', ['[]'] = '@class.outer' },
+                },
+            },
+        },
+        config = function(_, opts)
+            vim.o.foldmethod = 'expr'
+            vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+            require("nvim-treesitter.configs").setup(opts)
+        end,
+    },
+    { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
+
+    -- LSP
+    { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' },
+    { "folke/lazydev.nvim", ft = "lua" },
+    {
+        'neovim/nvim-lspconfig',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            'hrsh7th/cmp-nvim-lsp',
+            'SmiteshP/nvim-navic',
+        },
+        config = function()
+            local navic = require("nvim-navic")
+
+            vim.api.nvim_create_autocmd('LspAttach', {
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    local bufnr = args.buf
+
+                    local nmap = function(keys, func, desc)
+                        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. desc })
+                    end
+
+                    nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
+                    nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+                    nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+                    nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+                    nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
+                    nmap('<leader>D', vim.lsp.buf.type_definition, 'Type Definition')
+                    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+                    nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+                    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+                    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+                    nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+                    nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
+                    nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
+                    nmap('<leader>wl', function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, 'Workspace List Folders')
+
+                    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function()
+                        vim.lsp.buf.format()
+                    end, { desc = 'Format current buffer with LSP' })
+
+                    if client and client.server_capabilities.documentSymbolProvider then
+                        navic.attach(client, bufnr)
+                    end
+                end,
+            })
+
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+            require('mason').setup()
+            require('mason-lspconfig').setup {
+                ensure_installed = {
+                    'ansiblels', 'clangd', 'esbonio', 'jsonls',
+                    'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls',
+                },
+                automatic_enable = {
+                    exclude = { 'ltex' },
+                },
+            }
+
+            vim.lsp.config('*', { capabilities = capabilities })
+
+            vim.lsp.config('ltex', {
+                settings = { ltex = { language = 'en-GB' } },
+            })
+
+            vim.lsp.config('lua_ls', {
+                settings = {
+                    Lua = {
+                        runtime = { version = 'LuaJIT' },
+                        diagnostics = { globals = { 'vim' } },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = { enable = false },
+                    },
+                },
+            })
+
+            vim.lsp.enable({
+                'ansiblels', 'clangd', 'esbonio', 'jsonls',
+                'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls',
+            })
+        end,
+    },
+    {
+        'barreiroleo/ltex-extra.nvim',
+        lazy = true,
+        opts = { path = vim.fn.expand("~") .. "/.local/share/ltex" },
+    },
+
+    -- Completion
+    {
+        "L3MON4D3/LuaSnip",
+        event = "InsertEnter",
+        config = function()
+            dofile(vim.fn.stdpath("config") .. "/after/plugin/luasnip.lua")
+        end,
+        keys = {
+            { "<c-k>", function()
+                return require("luasnip").expand_or_jumpable() and "<Plug>luasnip-expand-or-jump" or "<c-k>"
+            end, expr = true, silent = true, mode = "i" },
+            { "<c-k>", function() require("luasnip").jump(1) end, mode = "s" },
+            { "<c-j>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+            { "<c-l>", function()
+                return require("luasnip").choice_active() and '<Plug>luasnip-next-choice' or '<c-l>'
+            end, mode = "i" },
+        },
+    },
+    {
+        "hrsh7th/nvim-cmp",
+        version = false,
+        event = "InsertEnter",
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-omni",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-calc",
+            "saadparwaiz1/cmp_luasnip",
+            "andersevenrud/cmp-tmux",
+        },
+        config = function()
+            local cmp = require('cmp')
+            local luasnip = require('luasnip')
+
+            cmp.setup {
+                view = { entries = "custom" },
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end,
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                }),
+                sources = {
+                    {
+                        name = 'buffer',
+                        option = {
+                            get_bufnrs = function()
+                                local bufs = {}
+                                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                    bufs[vim.api.nvim_win_get_buf(win)] = true
+                                end
+                                return vim.tbl_keys(bufs)
+                            end,
+                            keyword_pattern = [[\k\+]],
+                        },
+                    },
+                    { name = 'lazydev', group_index = 0 },
+                    { name = 'calc' },
+                    { name = 'luasnip' },
+                    { name = 'nvim_lsp' },
+                    { name = 'omni' },
+                    { name = 'tmux' },
+                },
+            }
+
+            cmp.setup.cmdline({ '/', '?' }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = { { name = 'buffer' } },
+            })
+
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources(
+                    { { name = 'path' } },
+                    { { name = 'cmdline' } }
+                ),
+            })
+        end,
+    },
+    { 'ray-x/lsp_signature.nvim', event = "LspAttach", opts = {} },
+
+    -- DAP
+    {
+        'mfussenegger/nvim-dap',
+        dependencies = {
+            'jayp0521/mason-nvim-dap.nvim',
+            'mxsdev/nvim-dap-vscode-js',
+        },
+        config = function()
+            local dap = require('dap')
+
+            dap.adapters.lldb = {
+                type = 'executable',
+                command = '/usr/bin/lldb-vscode',
+                name = 'lldb',
+            }
+            dap.configurations.cpp = {
+                {
+                    name = 'Launch',
+                    type = 'lldb',
+                    request = 'launch',
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    args = {},
+                },
+            }
+            dap.configurations.c = dap.configurations.cpp
+            dap.configurations.rust = dap.configurations.cpp
+
+            dap.adapters.python = {
+                type = 'executable',
+                command = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/debugpy/venv/bin/python',
+                args = { '-m', 'debugpy.adapter' },
+            }
+            dap.configurations.python = {
+                {
+                    type = 'python',
+                    request = 'launch',
+                    name = "Launch file",
+                    program = "${file}",
+                    pythonPath = function() return '/usr/bin/python' end,
+                },
+            }
+
+            dap.adapters.php = {
+                type = "executable",
+                command = "node",
+                args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
+            }
+            dap.configurations.php = {
+                {
+                    type = "php",
+                    request = "launch",
+                    name = "Listen for Xdebug",
+                    port = 9003,
+                    pathMappings = {
+                        ["/usr/share/icingaweb2/modules/director"] = "${workspaceFolder}",
+                    },
+                },
+            }
+
+            dap.adapters.node2 = {
+                type = 'executable',
+                command = 'node',
+                args = { os.getenv('HOME') .. '/.local/share/nvim/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
+            }
+            dap.configurations.typescript = {
+                {
+                    name = 'Launch',
+                    type = 'node2',
+                    request = 'launch',
+                    program = '${file}',
+                    cwd = vim.fn.getcwd(),
+                    sourceMaps = true,
+                    protocol = 'inspector',
+                    console = 'integratedTerminal',
+                },
+                {
+                    name = 'Attach to process',
+                    type = 'node2',
+                    request = 'attach',
+                    processId = require('dap.utils').pick_process,
+                    sourceMaps = true,
+                    cwd = vim.fn.getcwd(),
+                    outDir = "${workspaceFolder}/build",
+                    sourceRoot = "${workspaceFolder}/src",
+                    sourceMapPathOverrides = { ["webpack:///src/*"] = "${workspaceRoot}/src/*" },
+                    diagnosticLogging = true,
+                },
+            }
+
+            require("dap-vscode-js").setup({
+                debugger_path = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/js-debug-adapter/',
+                adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+                log_file_path = vim.fn.stdpath('cache') .. '/dap_vscode_js.log',
+            })
+
+            for _, language in ipairs({ "typescript", "javascript" }) do
+                dap.configurations[language] = {
+                    {
+                        type = "pwa-node",
+                        request = "attach",
+                        name = "Attach",
+                        processId = require('dap.utils').pick_process,
+                        cwd = "${workspaceFolder}",
+                    },
+                }
+            end
+
+            require('mason-nvim-dap').setup()
+        end,
+    },
+    {
+        'rcarriga/nvim-dap-ui',
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        opts = {},
+    },
+    { 'theHamsta/nvim-dap-virtual-text', opts = {} },
+
+    -- Editor
+    {
+        'stevearc/oil.nvim',
+        lazy = false,
+        keys = {
+            { '-', function() return require("oil").open() end, desc = "Open parent directory" },
+        },
+        opts = {
+            keymaps = {
+                ["g?"] = "actions.show_help",
+                ["<CR>"] = "actions.select",
+                ["<C-s>"] = "actions.select_vsplit",
+                ["<C-h>"] = "actions.select_split",
+                ["<C-p>"] = "actions.preview",
+                ["<C-l>"] = "actions.refresh",
+                ["-"] = "actions.parent",
+                ["_"] = "actions.open_cwd",
+                ["`"] = "actions.cd",
+                ["~"] = "actions.tcd",
+                ["g."] = "actions.toggle_hidden",
+            },
+            use_default_keymaps = false,
+        },
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "BufReadPre",
+        opts = {
+            signs = {
+                add = { text = '+' },
+                change = { text = '~' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+            },
+        },
+    },
+    {
+        'sindrets/diffview.nvim',
+        cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
+        keys = {
+            { "<leader>dvo", "<cmd>DiffviewOpen<cr>", desc = "Open Diff View" },
+            { "<leader>dvf", "<cmd>DiffviewFileHistory<cr>", desc = "Open File History Diff View" },
+        },
+    },
+    {
+        'gbprod/yanky.nvim',
+        event = "VeryLazy",
+        opts = {
+            ring = { history_length = 20 },
+            system_clipboard = { sync_with_ring = false },
+            highlight = { on_put = true, on_yank = true, timer = 500 },
+            preserve_cursor_position = { enabled = true },
+        },
+    },
+    { 'editorconfig/editorconfig-vim', event = "BufReadPre" },
+    {
+        'RaafatTurki/hex.nvim',
+        cmd = { 'HexDump', 'HexAssemble', 'HexToggle' },
+        opts = { is_binary_file = function() return false end },
+    },
+    { 'j-hui/fidget.nvim', event = "LspAttach", opts = {} },
+    { 'mbbill/undotree', cmd = "UndotreeToggle" },
+    {
+        "ggandor/leap.nvim",
+        keys = {
+            { "r", '<Plug>(leap-forward-to)', mode = { 'n', 'x', 'o' } },
+            { "R", '<Plug>(leap-backward-to)', mode = { 'n', 'x', 'o' } },
+        },
+    },
+    { dir = '~/git/private/ansible.nvim' },
+    { 'tpope/vim-abolish', event = "VeryLazy" },
+    { 'tpope/vim-fugitive', cmd = { "Git", "G", "Gdiffsplit", "Gclog", "Gread", "Gwrite" } },
+    { 'tpope/vim-speeddating', keys = { '<C-a>', '<C-x>' } },
+    { 'lervag/vimtex', ft = "tex" },
+    {
+        'nvim-telescope/telescope.nvim',
+        cmd = "Telescope",
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+            'nvim-telescope/telescope-file-browser.nvim',
+            'nvim-telescope/telescope-project.nvim',
+            'nvim-telescope/telescope-dap.nvim',
+        },
+        keys = {
+            { '<leader><space>', function() require('telescope.builtin').buffers() end, desc = 'Find buffers' },
+            { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find files' },
+            { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Live grep' },
+            { '<leader>fe', function() require('telescope.builtin').diagnostics() end, desc = 'Diagnostics' },
+            { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Help tags' },
+            { '<leader>fm', function() require('telescope.builtin').marks() end, desc = 'Marks' },
+            { '<leader>fd', function() require('telescope').extensions.project.project() end, desc = 'Projects' },
+        },
+        config = function()
+            local telescope = require('telescope')
+            telescope.setup { pickers = { find_files = { no_ignore = true } } }
+            telescope.load_extension('fzf')
+            telescope.load_extension('dap')
+            telescope.load_extension('project')
+        end,
+    },
+    { 'itchyny/vim-qfedit', ft = "qf" },
+    { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
+    { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
+
+    -- Coding
+    { 'machakann/vim-sandwich', event = "VeryLazy" },
+    { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git' },
+    { 'lambdalisue/suda.vim' },
+    { 'junegunn/vim-easy-align', keys = { { 'ga', mode = { 'n', 'x' } } } },
+    { 'mechatroner/rainbow_csv', ft = 'csv' },
+    { 'chrisbra/csv.vim', ft = 'csv' },
+    { 'michaeljsmith/vim-indent-object', event = "VeryLazy" },
+    {
+        'numToStr/Comment.nvim',
+        event = "VeryLazy",
+        main = 'Comment',
+        opts = {
+            pre_hook = function()
+                require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+            end,
+        },
+        dependencies = {
+            {
+                'JoosepAlviste/nvim-ts-context-commentstring',
+                init = function() vim.g.skip_ts_context_commentstring_module = true end,
+                opts = { enable_autocmd = false },
+            },
+        },
+    },
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        cmd = "Neogen",
+        opts = {
+            snippet_engine = "luasnip",
+            languages = {
+                python = { template = { annotation_convention = "numpydoc" } },
+            },
+        },
+    },
+
+    -- Markdown
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+        init = function() vim.g.mkdp_auto_close = 0 end,
+    },
+}
