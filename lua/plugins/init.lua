@@ -486,7 +486,6 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-            'nvim-telescope/telescope-file-browser.nvim',
             'nvim-telescope/telescope-project.nvim',
             'nvim-telescope/telescope-dap.nvim',
         },
