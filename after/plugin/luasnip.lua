@@ -313,11 +313,20 @@ snippets.php = {
 }
 
 snippets.rst = {
-    snippet({ trig = "..cb" }, {
+    snippet({ trig = "cb" }, {
         t('.. code-block:: bash'),
     }),
 }
 snippets.markdown = {
+
+    snippet({ trig = "cb"}, fmt(
+        [[
+        ```bash
+        {}
+        ```
+        ]],
+        { i(1) }
+    )),
 
     snippet({ trig = "ul" }, {
         t("<ul><li>"),
