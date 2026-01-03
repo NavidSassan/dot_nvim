@@ -1,4 +1,7 @@
-local ls = require "luasnip"
+-- Guard: only run when LuaSnip is loaded
+local ok, ls = pcall(require, "luasnip")
+if not ok then return end
+
 local types = require "luasnip.util.types"
 
 ls.config.set_config {
@@ -377,31 +380,31 @@ snippets.javascript = {
 --   })
 -- )
 
--- Make sure to not pass an invalid command, as io.popen() may write over nvim-text.
-table.insert(
-  snippets.all,
-  snippet(
-    { trig = "$$ (.*)", regTrig = true },
-    f(function(_, snip, command)
-      if snip.captures[1] then
-        command = snip.captures[1]
-      end
-
-      local file = io.popen(command, "r")
-      local res = { "$ " .. snip.captures[1] }
-      for line in file:lines() do
-        table.insert(res, line)
-      end
-      return res
-    end, {}, "ls"),
-    {
-      -- Don't show this one, because it's not useful as a general purpose snippet.
-      show_condition = function()
-        return false
-      end,
-    }
-  )
-)
+-- -- Make sure to not pass an invalid command, as io.popen() may write over nvim-text.
+-- table.insert(
+--   snippets.all,
+--   snippet(
+--     { trig = "$$ (.*)", regTrig = true },
+--     f(function(_, snip, command)
+--       if snip.captures[1] then
+--         command = snip.captures[1]
+--       end
+--
+--       local file = io.popen(command, "r")
+--       local res = { "$ " .. snip.captures[1] }
+--       for line in file:lines() do
+--         table.insert(res, line)
+--       end
+--       return res
+--     end, {}, "ls"),
+--     {
+--       -- Don't show this one, because it's not useful as a general purpose snippet.
+--       show_condition = function()
+--         return false
+--       end,
+--     }
+--   )
+-- )
 
 -- -- Lambda example
 -- table.insert(
