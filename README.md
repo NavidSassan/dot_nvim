@@ -239,6 +239,23 @@ Possible alternatives:
 * [vim-vinegar](https://github.com/tpope/vim-vinegar)
 
 
+### [mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
+
+Extended text objects with treesitter support. Works alongside `nvim-treesitter-textobjects` which provides the movement commands (`]m`, `[[`, etc.) while mini.ai handles the text object selection.
+
+| Key | Action |
+| --- | --- |
+| `if`/`af` | Function (inner/around) |
+| `ic`/`ac` | Class |
+| `ia`/`aa` | Argument/parameter |
+| `ii`/`ai` | Indent block |
+| `iq`/`aq` | Quotes (`'`, `"`, `` ` ``) |
+| `ib`/`ab` | Brackets (`()`, `[]`, `{}`) |
+| `it`/`at` | HTML tags |
+
+Use with operators: `daf` (delete function), `ciq` (change inner quotes), `vai` (select indent block), etc.
+
+
 ### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
 
 Text edit operators for replace, exchange, and sort.

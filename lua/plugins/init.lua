@@ -72,18 +72,6 @@ return {
                 },
             },
             textobjects = {
-                select = {
-                    enable = true,
-                    lookahead = true,
-                    keymaps = {
-                        ['aa'] = '@parameter.outer',
-                        ['ia'] = '@parameter.inner',
-                        ['af'] = '@function.outer',
-                        ['if'] = '@function.inner',
-                        ['ac'] = '@block.outer',
-                        ['ic'] = '@block.inner',
-                    },
-                },
                 move = {
                     enable = true,
                     set_jumps = true,
@@ -526,7 +514,22 @@ return {
     { 'junegunn/vim-easy-align', keys = { { 'ga', mode = { 'n', 'x' } } } },
     { 'mechatroner/rainbow_csv', ft = 'csv' },
     { 'chrisbra/csv.vim', ft = 'csv' },
-    { 'michaeljsmith/vim-indent-object', event = "VeryLazy" },
+    {
+        'echasnovski/mini.ai',
+        event = "VeryLazy",
+        opts = function()
+            local ai = require('mini.ai')
+            return {
+                n_lines = 500,
+                custom_textobjects = {
+                    -- Use treesitter for function/class/parameter
+                    f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+                    c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
+                    a = ai.gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }),
+                },
+            }
+        end,
+    },
     {
         'numToStr/Comment.nvim',
         event = "VeryLazy",
