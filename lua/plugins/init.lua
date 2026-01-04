@@ -554,7 +554,16 @@ return {
     {
         'nvim-mini/mini.surround',
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            custom_surroundings = {
+                ['('] = { output = { left = '(', right = ')' } },
+                [')'] = { output = { left = '( ', right = ' )' } },
+                ['['] = { output = { left = '[', right = ']' } },
+                [']'] = { output = { left = '[ ', right = ' ]' } },
+                ['{'] = { output = { left = '{', right = '}' } },
+                ['}'] = { output = { left = '{ ', right = ' }' } },
+            },
+        },
     },
     {
         'nvim-mini/mini.operators',
