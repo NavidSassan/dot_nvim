@@ -65,6 +65,7 @@ Commands:
 Possible alternatives:
 
 * [Gistory.vim](https://github.com/Tarmean/Gistory.vim)
+* [gv.vim](https://github.com/junegunn/gv.vim)
 
 
 ### [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
@@ -235,7 +236,7 @@ Text edit operators for replace, exchange, and sort.
 
 Possible alternatives:
 
-* https://github.com/ralismark/opsort.vim (would support visual-block column sorting / sorting lines by selected column)
+* [opsort.vim](https://github.com/ralismark/opsort.vim) (would support visual-block column sorting / sorting lines by selected column)
 
 
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
