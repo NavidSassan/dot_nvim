@@ -103,6 +103,7 @@ return {
 
     -- LSP
     { "folke/lazydev.nvim", ft = "lua" },
+    { 'williamboman/mason.nvim', cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' }, opts = {} },
     {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
@@ -157,7 +158,7 @@ return {
             require('mason-lspconfig').setup {
                 ensure_installed = {
                     'ansiblels', 'clangd', 'esbonio', 'jsonls',
-                    'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls',
+                    'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls', 'typos_lsp',
                 },
                 automatic_enable = {
                     exclude = { 'ltex' },
@@ -186,7 +187,7 @@ return {
 
             vim.lsp.enable({
                 'ansiblels', 'clangd', 'esbonio', 'jsonls',
-                'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls',
+                'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls', 'typos_lsp',
             })
         end,
     },
