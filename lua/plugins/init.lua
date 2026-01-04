@@ -555,6 +555,18 @@ return {
             },
         },
     },
+    {
+        "andrewferrier/debugprint.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        keys = {
+            { "g?p", desc = "Debug print below" },
+            { "g?P", desc = "Debug print above" },
+            { "g?v", mode = { "n", "x" }, desc = "Debug print variable below" },
+            { "g?V", mode = { "n", "x" }, desc = "Debug print variable above" },
+        },
+        cmd = "Debugprint",
+        opts = {},
+    },
 
     -- Markdown
     {

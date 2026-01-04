@@ -261,21 +261,6 @@ snippets.python = {
         t({"if __name__ == '__main__':", '    main()'}),
     }),
 
-    snippet({ trig = "p=" }, {
-        t("print(f'''{"),
-        i(1),
-        t("=}''')"),
-        i(0),
-    }),
-
-    snippet("pd", fmta([[
-        print(f'<>: {<>}')
-      ]],
-        {
-            rep(1),
-            i(1),
-        }
-    )),
 }
 
 snippets.bib = {

@@ -50,6 +50,25 @@ Keymappings:
 "Tmux completion source for nvim-cmp."
 
 
+### [debugprint.nvim](https://github.com/andrewferrier/debugprint.nvim)
+
+Insert debug print statements with file/line info and variable values. Supports 40+ languages.
+
+Keymappings:
+
+| Key | Action |
+| --- | --- |
+| `g?p` / `g?P` | Insert plain debug print below/above |
+| `g?v` / `g?V` | Insert variable debug print below/above (auto-detects variable under cursor) |
+
+Commands:
+
+| Command | Action |
+| --- | --- |
+| `:Debugprint delete` | Remove all debug statements |
+| `:Debugprint commenttoggle` | Toggle comments on debug lines |
+
+
 ### [diffview.nvim](https://github.com/sindrets/diffview.nvim)
 
 Nice git diffs with filelists.
