@@ -410,6 +410,13 @@ return {
             { '-', function() return require("oil").open() end, desc = "Open parent directory" },
         },
         opts = {
+            columns = {
+                "icon",
+                "permissions",
+                "size",
+                "mtime",
+            },
+            delete_to_trash = true,
             keymaps = {
                 ["g?"] = "actions.show_help",
                 ["<CR>"] = "actions.select",
