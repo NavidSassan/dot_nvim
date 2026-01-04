@@ -191,7 +191,7 @@ Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pyls
 
 ### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 
-"A completion engine plugin for neovim written in Lua."
+"A completion engine plugin for neovim written in Lua." Configured with sources for LSP, buffer, path, cmdline, snippets, tmux, calc, and omni.
 
 Keymappings:
 
@@ -199,6 +199,10 @@ Keymappings:
 | ---     | ---              |
 | `<C-d>` | scroll docs down |
 | `<C-f>` | scroll docs up   |
+
+Possible alternatives:
+
+* [mini.completion](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md) (simpler, but fewer sources - no tmux, path, calc, etc.)
 
 
 ### [nvim-navic](https://github.com/SmiteshP/nvim-navic)
