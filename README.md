@@ -294,6 +294,22 @@ Possible alternatives:
 * [nvim-surround](https://github.com/kylechui/nvim-surround)
 
 
+### [mini.splitjoin](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md)
+
+Split and join arguments, array elements, etc. Toggles between single-line and multi-line formats.
+
+| Key | Action |
+| --- | --- |
+| `gS` | Toggle split/join |
+
+Examples: `gS` on `foo(a, b, c)` splits to multi-line; `gS` again joins back.
+
+Possible alternatives:
+
+* [treesj](https://github.com/Wansmer/treesj)
+* [splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim)
+
+
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
 
 "A simple, vimscript only, command runner for sending commands from vim to tmux." My fork of <https://github.com/christoomey/vim-tmux-runner>.

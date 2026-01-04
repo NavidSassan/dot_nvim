@@ -513,6 +513,11 @@ return {
             evaluate = { prefix = '' },
         },
     },
+    {
+        'echasnovski/mini.splitjoin',
+        keys = { 'gS' },
+        opts = {},
+    },
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git' },
     { 'lambdalisue/suda.vim' },
     { 'junegunn/vim-easy-align', keys = { { 'ga', mode = { 'n', 'x' } } } },
