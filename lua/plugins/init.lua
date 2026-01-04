@@ -206,13 +206,23 @@ return {
         end,
         keys = {
             { "<c-k>", function()
-                return require("luasnip").expand_or_jumpable() and "<Plug>luasnip-expand-or-jump" or "<c-k>"
-            end, expr = true, silent = true, mode = "i" },
-            { "<c-k>", function() require("luasnip").jump(1) end, mode = "s" },
-            { "<c-j>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+                local ls = require("luasnip")
+                if ls.expand_or_locally_jumpable() then
+                    ls.expand_or_jump()
+                end
+            end, silent = true, mode = { "i", "s" } },
+            { "<c-j>", function()
+                local ls = require("luasnip")
+                if ls.locally_jumpable(-1) then
+                    ls.jump(-1)
+                end
+            end, silent = true, mode = { "i", "s" } },
             { "<c-l>", function()
-                return require("luasnip").choice_active() and '<Plug>luasnip-next-choice' or '<c-l>'
-            end, mode = "i" },
+                local ls = require("luasnip")
+                if ls.choice_active() then
+                    ls.change_choice(1)
+                end
+            end, silent = true, mode = { "i", "s" } },
         },
     },
     {
@@ -243,6 +253,7 @@ return {
                 mapping = cmp.mapping.preset.insert({
                     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = {
                     {
