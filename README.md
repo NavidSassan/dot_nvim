@@ -7,7 +7,7 @@ Always WIP.
 
 ## Plugins
 
-### [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
+### [mini.comment](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-comment.md)
 
 Comment/uncomment lines with treesitter support via `ts_context_commentstring`.
 
@@ -110,7 +110,7 @@ Commands:
 Possible alternatives:
 
 * [indentLine](https://github.com/Yggdroot/indentLine)
-* [mini.indentscope](https://github.com/echasnovski/mini.indentscope)
+* [mini.indentscope](https://github.com/nvim-mini/mini.indentscope)
 
 
 ### [leap.nvim](https://github.com/ggandor/leap.nvim)
@@ -202,7 +202,7 @@ Keymappings:
 
 Possible alternatives:
 
-* [mini.completion](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md) (simpler, but fewer sources - no tmux, path, calc, etc.)
+* [mini.completion](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-completion.md) (simpler, but fewer sources - no tmux, path, calc, etc.)
 
 
 ### [nvim-navic](https://github.com/SmiteshP/nvim-navic)
@@ -241,7 +241,7 @@ Possible alternatives:
 * [vim-vinegar](https://github.com/tpope/vim-vinegar)
 
 
-### [mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
+### [mini.ai](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-ai.md)
 
 Extended text objects with treesitter support. Works alongside `nvim-treesitter-textobjects` which provides the movement commands (`]m`, `[[`, etc.) while mini.ai handles the text object selection.
 
@@ -258,7 +258,7 @@ Extended text objects with treesitter support. Works alongside `nvim-treesitter-
 Use with operators: `daf` (delete function), `ciq` (change inner quotes), `vai` (select indent block), etc.
 
 
-### [mini.clue](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md)
+### [mini.clue](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-clue.md)
 
 Show available keybindings in a floating window after pressing a prefix key. Includes "submodes" for window operations.
 
@@ -271,7 +271,7 @@ Possible alternatives:
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 
 
-### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
+### [mini.operators](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-operators.md)
 
 Text edit operators for replace, exchange, and sort.
 
@@ -290,7 +290,7 @@ Possible alternatives:
 * [opsort.vim](https://github.com/ralismark/opsort.vim) (would support visual-block column sorting / sorting lines by selected column)
 
 
-### [mini.surround](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
+### [mini.surround](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-surround.md)
 
 Add, delete, replace surrounding pairs (brackets, quotes, tags, etc.).
 
@@ -311,7 +311,7 @@ Possible alternatives:
 * [nvim-surround](https://github.com/kylechui/nvim-surround)
 
 
-### [mini.splitjoin](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md)
+### [mini.splitjoin](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-splitjoin.md)
 
 Split and join arguments, array elements, etc. Toggles between single-line and multi-line formats.
 

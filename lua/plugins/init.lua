@@ -497,7 +497,7 @@ return {
     { 'itchyny/vim-qfedit', ft = "qf" },
     { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
     {
-        'echasnovski/mini.clue',
+        'nvim-mini/mini.clue',
         event = 'VeryLazy',
         opts = function()
             local clue = require('mini.clue')
@@ -534,12 +534,12 @@ return {
 
     -- Coding
     {
-        'echasnovski/mini.surround',
+        'nvim-mini/mini.surround',
         event = "VeryLazy",
         opts = {},
     },
     {
-        'echasnovski/mini.operators',
+        'nvim-mini/mini.operators',
         keys = { 'gz', 'gx', 'gs' },
         opts = {
             replace = { prefix = 'gz' },
@@ -548,7 +548,7 @@ return {
         },
     },
     {
-        'echasnovski/mini.splitjoin',
+        'nvim-mini/mini.splitjoin',
         keys = { 'gS' },
         opts = {},
     },
@@ -558,7 +558,7 @@ return {
     { 'mechatroner/rainbow_csv', ft = 'csv' },
     { 'chrisbra/csv.vim', ft = 'csv' },
     {
-        'echasnovski/mini.ai',
+        'nvim-mini/mini.ai',
         event = "VeryLazy",
         opts = function()
             local ai = require('mini.ai')
@@ -574,7 +574,7 @@ return {
         end,
     },
     {
-        'echasnovski/mini.comment',
+        'nvim-mini/mini.comment',
         event = "VeryLazy",
         opts = {
             options = {
