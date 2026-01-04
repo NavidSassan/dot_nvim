@@ -99,6 +99,7 @@ return {
         end,
     },
     { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
+    { 'HiPhish/rainbow-delimiters.nvim', event = { 'BufReadPost', 'BufNewFile' } },
 
     -- LSP
     { "folke/lazydev.nvim", ft = "lua" },
