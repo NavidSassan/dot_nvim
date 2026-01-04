@@ -378,6 +378,15 @@ Possible alternatives:
 * [vim-vinegar](https://github.com/tpope/vim-vinegar)
 
 
+### [vim-easy-align](https://github.com/junegunn/vim-easy-align)
+
+Align text by delimiter. Uses vim regex.
+
+Possible alternatives:
+
+* [mini.align](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md) (uses Lua patterns instead of regex)
+
+
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
 
 "A simple, vimscript only, command runner for sending commands from vim to tmux." My fork of <https://github.com/christoomey/vim-tmux-runner>.
