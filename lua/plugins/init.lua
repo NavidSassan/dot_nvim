@@ -44,7 +44,17 @@ return {
         },
     },
     { "SmiteshP/nvim-navic", lazy = true },
-    { "nvim-tree/nvim-web-devicons", lazy = true },
+    {
+        'echasnovski/mini.icons',
+        lazy = true,
+        init = function()
+            package.preload['nvim-web-devicons'] = function()
+                require('mini.icons').mock_nvim_web_devicons()
+                return package.loaded['nvim-web-devicons']
+            end
+        end,
+        opts = {},
+    },
     { 'NvChad/nvim-colorizer.lua', event = "BufReadPre", opts = {} },
 
     -- Treesitter
