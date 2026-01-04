@@ -11,11 +11,6 @@ Always WIP.
 
 "Smart and Powerful commenting plugin for neovim" with native treesitter support for calculating <span class="title-ref">'commentstring'</span>.
 
-Possible alternatives:
-
-* [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
-* [vim-commentary](https://github.com/tpope/vim-commentary)
-
 Keymappings:
 
 | Key   | Action                         |
@@ -25,6 +20,11 @@ Keymappings:
 | `gco` | add comment below current line |
 | `gcO` | add comment above current line |
 | `gcA` | add comment at the end of line |
+
+Possible alternatives:
+
+* [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
+* [vim-commentary](https://github.com/tpope/vim-commentary)
 
 
 ### [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
@@ -38,23 +38,6 @@ Keymappings:
 | `<C-k>` | Expand the snippet under the cursor or jump to the next insert node |
 | `<C-j>` | Jump to the previous insert node                                    |
 | `<C-l>` | Choose the next choice in a choice node                             |
-
-
-### [autolist.nvim](https://github.com/gaoDean/autolist.nvim)
-
-Automatic list continuation and formatting for neovim, especially useful for Markdown editing.
-
-Possible alternatives:
-
-* [bullets.vim](https://github.com/dkarter/bullets.vim)
-
-Keymappings:
-
-| Key       | Action                                   |
-| ---       | ---                                      |
-| `<tab>`   | indent the list item                     |
-| `<c-tab>` | detent the list item                     |
-| `<c-r>`   | cycle list type or (un-)check checkboxes |
 
 
 ### [cmp-omni](https://github.com/hrsh7th/cmp-omni)
@@ -71,10 +54,6 @@ Keymappings:
 
 Nice git diffs with filelists.
 
-Possible alternatives:
-
-* [Gistory.vim](https://github.com/Tarmean/Gistory.vim)
-
 Commands:
 
 | Command                                                     | Action                                                                             |
@@ -82,6 +61,10 @@ Commands:
 | `:DiffviewOpen origin/main...HEAD -- lua/diffview plugin`   | show diff between origin/main and HEAD for `lua/diffview` and `plugin`             |
 | `:DiffviewRefresh`                                          | Update stats and entries in the file list of the current Diffview                  |
 | `:DiffviewFileHistory include/this and/this :!but/not/this` | Opens a new file history view that lists all commits that affected the given paths |
+
+Possible alternatives:
+
+* [Gistory.vim](https://github.com/Tarmean/Gistory.vim)
 
 
 ### [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
@@ -116,13 +99,6 @@ Possible alternatives:
 
 "Leap is a general-purpose motion plugin"
 
-Possible alternatives:
-
-* [lightspeed.nvim](https://github.com/ggandor/lightspeed.nvim)
-* [EasyMotion](https://github.com/easymotion/vim-easymotion)
-* [Hop](https://github.com/phaazon/hop.nvim)
-* [Quick-Scope](https://github.com/unblevable/quick-scope)
-
 Keymappings:
 
 | Key | Action                                                                                        |
@@ -135,6 +111,13 @@ Keymappings:
 TODO: last two keybinds do not work
 
 "Entering traversal mode after the first input is a useful shortcut, especially in operator-pending mode, but it can also be used as a substitute for normal-mode f/t motions. s{char}`<enter>` is the same as f{char}, but works over multiple lines."
+
+Possible alternatives:
+
+* [lightspeed.nvim](https://github.com/ggandor/lightspeed.nvim)
+* [EasyMotion](https://github.com/easymotion/vim-easymotion)
+* [Hop](https://github.com/phaazon/hop.nvim)
+* [Quick-Scope](https://github.com/unblevable/quick-scope)
 
 
 ### [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)
@@ -200,33 +183,6 @@ Keymappings:
 | `<C-f>` | scroll docs up   |
 
 
-### [nvim-gdb](https://github.com/sakhnik/nvim-gdb)
-
-TODO: Description
-
-Possible alternatives:
-
-* 
-
-Keymappings:
-
-| Key | Action |
-| --- | ---    |
-| 1   | 2      |
-
-Commands:
-
-| Command | Action |
-| ---     | ---    |
-| 1       | 2      |
-
-Installation:
-
-```bash
-sudo dnf install cmake gdb lldb rr g++ -y
-```
-
-
 ### [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 
 "A simple statusline/winbar component that uses LSP to show your current code context." Useful for seeing the current position in large JSON files.
@@ -252,15 +208,15 @@ Helped me prevent `Comment.nvim: nil` messages.
 
 "A vim-vinegar like file explorer that lets you edit your filesystem like a normal Neovim buffer", basically better `vidir`.
 
-Possible alternatives:
-
-* [vim-vinegar](https://github.com/tpope/vim-vinegar)
-
 Keymappings:
 
 | Key | Action                |
 | --- | ---                   |
 | `-` | open parent directory |
+
+Possible alternatives:
+
+* [vim-vinegar](https://github.com/tpope/vim-vinegar)
 
 
 ### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
@@ -276,6 +232,10 @@ Text edit operators for replace, exchange, and sort.
 | `gxx` | Exchange line |
 | `gs{motion}` | Sort text |
 | `gss` | Sort line (characters) |
+
+Possible alternatives:
+
+* https://github.com/ralismark/opsort.vim (would support visual-block column sorting / sorting lines by selected column)
 
 
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
@@ -293,10 +253,6 @@ Text edit operators for replace, exchange, and sort.
 
 Provides a yank-ring, allowing cycling through the yank history on paste. Also highlights yanks and pastes.
 
-Possible alternatives:
-
-* [nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
-
 Keymappings:
 
 | Key     | Action                                 |
@@ -304,21 +260,14 @@ Keymappings:
 | `<C-n>` | Cycle forward through the yank-ring.   |
 | `<C-p>` | Cycle backwards through the yank-ring. |
 
+Possible alternatives:
 
-### [vim-wordmotion](https://github.com/chaoren/vim-wordmotion)
-
-"More useful word motions for Vim". Makes the default word motions smaller, for CamelCase, snake_case, etc.
-
-TODO: replace with https://github.com/backdround/neowords.nvim? or https://github.com/chrisgrieser/nvim-spider?
+* [nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
 
 
 ### [template](link-to-repo)
 
 Description
-
-Possible alternatives:
-
-* 
 
 Keymappings:
 
@@ -333,6 +282,9 @@ Commands:
 | 1       | 2      |
 
 
+Possible alternatives:
+
+*
 
 ## Plugins that I am considering
 
