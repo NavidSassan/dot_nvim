@@ -67,6 +67,25 @@ Commands:
 | `:Debugprint commenttoggle` | Toggle comments on debug lines |
 
 
+### [dial.nvim](https://github.com/monaqa/dial.nvim)
+
+Enhanced `<C-a>`/`<C-x>` increment/decrement with support for booleans, dates, and more.
+
+| Key | Action |
+| --- | --- |
+| `<C-a>` | Increment (numbers, booleans, dates) |
+| `<C-x>` | Decrement |
+| `g<C-a>` | Increment (sequential in visual) |
+| `g<C-x>` | Decrement (sequential in visual) |
+
+Supports: `true`/`false`, `yes`/`no`, `on`/`off`, `enable`/`disable`, dates (`2025-01-04`), numbers.
+
+Possible alternatives:
+
+* [boole.nvim](https://github.com/nat-418/boole.nvim)
+* [nvim-toggler](https://github.com/nguyenvukhang/nvim-toggler)
+
+
 ### [diffview.nvim](https://github.com/sindrets/diffview.nvim)
 
 Nice git diffs with filelists.
@@ -269,6 +288,7 @@ After `<C-w>` you can keep pressing:
 Possible alternatives:
 
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) (alternative for `postkeys`)
 
 
 ### [mini.operators](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-operators.md)
