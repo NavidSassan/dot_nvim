@@ -7,23 +7,21 @@ Always WIP.
 
 ## Plugins
 
-### [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+### [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
 
-"Smart and Powerful commenting plugin for neovim" with native treesitter support for calculating <span class="title-ref">'commentstring'</span>.
+Comment/uncomment lines with treesitter support via `ts_context_commentstring`.
 
 Keymappings:
 
-| Key   | Action                         |
-| ---   | ---                            |
-| `gcc` | line-wise comment              |
-| `gbc` | block-wise comment             |
-| `gco` | add comment below current line |
-| `gcO` | add comment above current line |
-| `gcA` | add comment at the end of line |
+| Key | Action |
+| --- | --- |
+| `gc{motion}` | Toggle comment over motion |
+| `gcc` | Toggle comment on current line |
+| `gc` (visual) | Toggle comment on selection |
 
 Possible alternatives:
 
-* [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
+* [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 * [vim-commentary](https://github.com/tpope/vim-commentary)
 
 

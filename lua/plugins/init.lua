@@ -531,13 +531,14 @@ return {
         end,
     },
     {
-        'numToStr/Comment.nvim',
+        'echasnovski/mini.comment',
         event = "VeryLazy",
-        main = 'Comment',
         opts = {
-            pre_hook = function()
-                require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
-            end,
+            options = {
+                custom_commentstring = function()
+                    return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+                end,
+            },
         },
         dependencies = {
             {
