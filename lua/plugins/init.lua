@@ -496,7 +496,41 @@ return {
     },
     { 'itchyny/vim-qfedit', ft = "qf" },
     { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
-    { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
+    {
+        'echasnovski/mini.clue',
+        event = 'VeryLazy',
+        opts = function()
+            local clue = require('mini.clue')
+            return {
+                window = { delay = 200 },
+                triggers = {
+                    { mode = 'n', keys = '<Leader>' },
+                    { mode = 'x', keys = '<Leader>' },
+                    { mode = 'n', keys = 'g' },
+                    { mode = 'x', keys = 'g' },
+                    { mode = 'n', keys = 'z' },
+                    { mode = 'n', keys = '<C-w>' },
+                    { mode = 'n', keys = '[' },
+                    { mode = 'n', keys = ']' },
+                    { mode = 'n', keys = "'" },
+                    { mode = 'n', keys = '`' },
+                    { mode = 'n', keys = '"' },
+                    { mode = 'x', keys = '"' },
+                    { mode = 'i', keys = '<C-r>' },
+                    { mode = 'c', keys = '<C-r>' },
+                },
+                clues = {
+                    clue.gen_clues.builtin_completion(),
+                    clue.gen_clues.g(),
+                    clue.gen_clues.marks(),
+                    clue.gen_clues.registers(),
+                    clue.gen_clues.square_brackets(),
+                    clue.gen_clues.windows({ submode_navigate = true, submode_resize = true }),
+                    clue.gen_clues.z(),
+                },
+            }
+        end,
+    },
 
     -- Coding
     {
