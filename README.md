@@ -258,6 +258,19 @@ Extended text objects with treesitter support. Works alongside `nvim-treesitter-
 Use with operators: `daf` (delete function), `ciq` (change inner quotes), `vai` (select indent block), etc.
 
 
+### [mini.clue](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md)
+
+Show available keybindings in a floating window after pressing a prefix key. Includes "submodes" for window operations.
+
+After `<C-w>` you can keep pressing:
+- `h`/`j`/`k`/`l` to navigate windows
+- `+`/`-`/`<`/`>` to resize windows
+
+Possible alternatives:
+
+* [which-key.nvim](https://github.com/folke/which-key.nvim)
+
+
 ### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
 
 Text edit operators for replace, exchange, and sort.
