@@ -569,6 +569,37 @@ return {
         keys = { 'gS' },
         opts = {},
     },
+    {
+        'monaqa/dial.nvim',
+        keys = {
+            { '<C-a>', '<Plug>(dial-increment)', desc = 'Increment' },
+            { '<C-x>', '<Plug>(dial-decrement)', desc = 'Decrement' },
+            { '<C-a>', '<Plug>(dial-increment)', mode = 'v', desc = 'Increment' },
+            { '<C-x>', '<Plug>(dial-decrement)', mode = 'v', desc = 'Decrement' },
+            { 'g<C-a>', 'g<Plug>(dial-increment)', mode = 'v', desc = 'Increment (sequential)' },
+            { 'g<C-x>', 'g<Plug>(dial-decrement)', mode = 'v', desc = 'Decrement (sequential)' },
+        },
+        config = function()
+            local augend = require('dial.augend')
+            require('dial.config').augends:register_group({
+                default = {
+                    augend.integer.alias.decimal,
+                    augend.integer.alias.hex,
+                    augend.constant.alias.bool,
+                    augend.constant.new({ elements = { 'yes', 'no' } }),
+                    augend.constant.new({ elements = { 'on', 'off' } }),
+                    augend.constant.new({ elements = { 'enable', 'disable' } }),
+                    augend.constant.new({ elements = { 'enabled', 'disabled' } }),
+                    augend.constant.new({ elements = { 'True', 'False' } }),
+                    augend.constant.new({ elements = { 'YES', 'NO' } }),
+                    augend.constant.new({ elements = { 'ON', 'OFF' } }),
+                    augend.date.alias['%Y-%m-%d'],
+                    augend.date.alias['%Y/%m/%d'],
+                    augend.date.alias['%d.%m.%Y'],
+                },
+            })
+        end,
+    },
     { url = 'https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git' },
     { 'lambdalisue/suda.vim' },
     { 'junegunn/vim-easy-align', keys = { { 'ga', mode = { 'n', 'x' } } } },
