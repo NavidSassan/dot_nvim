@@ -7,6 +7,20 @@ Always WIP.
 
 ## Plugins
 
+### [aerial.nvim](https://github.com/stevearc/aerial.nvim)
+
+Code outline/symbol tree. Supports LSP, treesitter, and markdown.
+
+| Key | Action |
+| --- | --- |
+| `gO` | Toggle aerial outline |
+
+Possible alternatives:
+
+* [outline.nvim](https://github.com/hedyhli/outline.nvim)
+* [symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
+
+
 ### [cmp-omni](https://github.com/hrsh7th/cmp-omni)
 
 "nvim-cmp source for omnifunc." omnifunc allows other plugins to provide autocomplete options, for example vimtex.
@@ -329,6 +343,24 @@ TODO: integrate in statusline.
 
 Comment.nvim has in-built treesitter support, but recommends to use this plugin for "advanced use cases".
 Helped me prevent `Comment.nvim: nil` messages.
+
+
+### [nvim-spider](https://github.com/chrisgrieser/nvim-spider)
+
+Subword motion - `w`, `e`, `b` stop at camelCase, snake_case boundaries and skip insignificant punctuation.
+
+| Key | Action |
+| --- | --- |
+| `w` | Move to next subword |
+| `e` | Move to end of subword |
+| `b` | Move to previous subword |
+
+Example: `myVariableName` → 3 stops (`my`, `Variable`, `Name`) instead of 1.
+
+Possible alternatives:
+
+* [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion)
+* [neowords.nvim](https://github.com/backdround/neowords.nvim)
 
 
 ### [oil.nvim](https://github.com/stevearc/oil.nvim)
