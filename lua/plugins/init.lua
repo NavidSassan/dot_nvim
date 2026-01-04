@@ -516,6 +516,17 @@ return {
     { 'itchyny/vim-qfedit', ft = "qf" },
     { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
     {
+        'stevearc/aerial.nvim',
+        event = 'LspAttach',
+        cmd = { 'AerialToggle', 'AerialOpen', 'AerialNavToggle' },
+        -- Using on_attach instead of keys because lazy.nvim keys don't work reliably here
+        opts = {
+            on_attach = function(bufnr)
+                vim.keymap.set('n', 'gO', '<cmd>AerialToggle<CR>', { buffer = bufnr, desc = 'Toggle Aerial outline' })
+            end,
+        },
+    },
+    {
         'chrisgrieser/nvim-spider',
         keys = {
             { 'w', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' }, desc = 'Spider w' },
