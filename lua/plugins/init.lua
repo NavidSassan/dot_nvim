@@ -518,7 +518,19 @@ return {
         },
         config = function()
             local telescope = require('telescope')
-            telescope.setup { pickers = { find_files = { no_ignore = true } } }
+            telescope.setup {
+                defaults = {
+                    path_display = { "truncate" },
+                    file_ignore_patterns = { "node_modules", "%.git/" },
+                    preview = {
+                        filesize_limit = 0.5,
+                        timeout = 250,
+                    },
+                },
+                pickers = {
+                    find_files = { no_ignore = true },
+                },
+            }
             telescope.load_extension('fzf')
             telescope.load_extension('dap')
             telescope.load_extension('project')
