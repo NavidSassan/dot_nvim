@@ -8,7 +8,7 @@ map('n', '<leader>wdt', '<cmd>windo diffthis<cr>', { silent = true, desc = 'Diff
 map('n', '<leader>wdo', '<cmd>windo diffoff<cr>', { silent = true, desc = 'Diff off (all windows)' })
 
 -- Clear search highlight
-map('n', '<leader>n', '<cmd>nohlsearch<cr>', { silent = true, desc = 'Clear search highlight' })
+map('n', '<Esc>', '<cmd>nohlsearch<cr>', { desc = 'Clear search highlight' })
 
 -- Delete to black hole register
 map('n', 'D', '"_d', { desc = 'Delete to black hole' })
