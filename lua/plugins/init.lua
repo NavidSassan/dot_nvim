@@ -499,7 +499,11 @@ return {
     { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
 
     -- Coding
-    { 'machakann/vim-sandwich', event = "VeryLazy" },
+    {
+        'echasnovski/mini.surround',
+        event = "VeryLazy",
+        opts = {},
+    },
     {
         'echasnovski/mini.operators',
         keys = { 'gz', 'gx', 'gs' },

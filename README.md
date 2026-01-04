@@ -273,6 +273,27 @@ Possible alternatives:
 * [opsort.vim](https://github.com/ralismark/opsort.vim) (would support visual-block column sorting / sorting lines by selected column)
 
 
+### [mini.surround](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
+
+Add, delete, replace surrounding pairs (brackets, quotes, tags, etc.).
+
+| Key | Action |
+| --- | --- |
+| `sa{motion}{char}` | Add surrounding |
+| `sd{char}` | Delete surrounding |
+| `sr{old}{new}` | Replace surrounding |
+| `sf{char}` | Find surrounding (forward) |
+| `sF{char}` | Find surrounding (backward) |
+| `sh{char}` | Highlight surrounding |
+
+Examples: `saiw"` (surround word with quotes), `sd"` (delete quotes), `sr"'` (replace `"` with `'`).
+
+Possible alternatives:
+
+* [vim-sandwich](https://github.com/machakann/vim-sandwich)
+* [nvim-surround](https://github.com/kylechui/nvim-surround)
+
+
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
 
 "A simple, vimscript only, command runner for sending commands from vim to tmux." My fork of <https://github.com/christoomey/vim-tmux-runner>.
