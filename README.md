@@ -7,37 +7,6 @@ Always WIP.
 
 ## Plugins
 
-### [mini.comment](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-comment.md)
-
-Comment/uncomment lines with treesitter support via `ts_context_commentstring`.
-
-Keymappings:
-
-| Key | Action |
-| --- | --- |
-| `gc{motion}` | Toggle comment over motion |
-| `gcc` | Toggle comment on current line |
-| `gc` (visual) | Toggle comment on selection |
-
-Possible alternatives:
-
-* [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-* [vim-commentary](https://github.com/tpope/vim-commentary)
-
-
-### [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-
-Snippet engine written in Lua.
-
-Keymappings:
-
-| Key     | Action                                                              |
-| ---     | ---                                                                 |
-| `<C-k>` | Expand the snippet under the cursor or jump to the next insert node |
-| `<C-j>` | Jump to the previous insert node                                    |
-| `<C-l>` | Choose the next choice in a choice node                             |
-
-
 ### [cmp-omni](https://github.com/hrsh7th/cmp-omni)
 
 "nvim-cmp source for omnifunc." omnifunc allows other plugins to provide autocomplete options, for example vimtex.
@@ -132,6 +101,11 @@ Possible alternatives:
 * [mini.indentscope](https://github.com/nvim-mini/mini.indentscope)
 
 
+### [lazydev.nvim](https://github.com/folke/lazydev.nvim)
+
+"lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries."
+
+
 ### [leap.nvim](https://github.com/ggandor/leap.nvim)
 
 "Leap is a general-purpose motion plugin"
@@ -167,7 +141,6 @@ Show function signature as you type.
 Helpers for configuring LSP servers.
 
 
-
 ### [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 
 "A blazing fast and easy to configure Neovim statusline written in Lua."
@@ -176,6 +149,19 @@ Possible alternatives:
 
 * [feline.nvim](https://github.com/feline-nvim/feline.nvim)
 * [lightline.vim](https://github.com/itchyny/lightline.vim)
+
+
+### [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+
+Snippet engine written in Lua.
+
+Keymappings:
+
+| Key     | Action                                                              |
+| ---     | ---                                                                 |
+| `<C-k>` | Expand the snippet under the cursor or jump to the next insert node |
+| `<C-j>` | Jump to the previous insert node                                    |
+| `<C-l>` | Choose the next choice in a choice node                             |
 
 
 ### [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
@@ -203,9 +189,109 @@ Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pyls
 2. `:Lazy load ltex-extra.nvim` - (Optional) Load extra features for dictionary management
 
 
-### [lazydev.nvim](https://github.com/folke/lazydev.nvim)
+### [mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
 
-"lazydev.nvim is a plugin that properly configures LuaLS for editing your Neovim config by lazily updating your workspace libraries."
+Extended text objects with treesitter support. Works alongside `nvim-treesitter-textobjects` which provides the movement commands (`]m`, `[[`, etc.) while mini.ai handles the text object selection.
+
+| Key | Action |
+| --- | --- |
+| `if`/`af` | Function (inner/around) |
+| `ic`/`ac` | Class |
+| `ia`/`aa` | Argument/parameter |
+| `ii`/`ai` | Indent block |
+| `iq`/`aq` | Quotes (`'`, `"`, `` ` ``) |
+| `ib`/`ab` | Brackets (`()`, `[]`, `{}`) |
+| `it`/`at` | HTML tags |
+
+Use with operators: `daf` (delete function), `ciq` (change inner quotes), `vai` (select indent block), etc.
+
+
+### [mini.clue](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-clue.md)
+
+Show available keybindings in a floating window after pressing a prefix key. Includes "submodes" for window operations.
+
+After `<C-w>` you can keep pressing:
+- `h`/`j`/`k`/`l` to navigate windows
+- `+`/`-`/`<`/`>` to resize windows
+
+Possible alternatives:
+
+* [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) (alternative for `postkeys`)
+
+
+### [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md)
+
+Comment/uncomment lines with treesitter support via `ts_context_commentstring`.
+
+Keymappings:
+
+| Key | Action |
+| --- | --- |
+| `gc{motion}` | Toggle comment over motion |
+| `gcc` | Toggle comment on current line |
+| `gc` (visual) | Toggle comment on selection |
+
+Possible alternatives:
+
+* [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+* [vim-commentary](https://github.com/tpope/vim-commentary)
+
+
+### [mini.operators](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-operators.md)
+
+Text edit operators for replace, exchange, and sort.
+
+| Key | Action |
+| --- | --- |
+| `gz{motion}` | Replace with register |
+| `gzz` | Replace line |
+| `gz` (visual) | Replace selection |
+| `gx{motion}` | Exchange text (use twice to swap) |
+| `gxx` | Exchange line |
+| `gs{motion}` | Sort text |
+| `gss` | Sort line (characters) |
+
+Possible alternatives:
+
+* [opsort.vim](https://github.com/ralismark/opsort.vim) (would support visual-block column sorting / sorting lines by selected column)
+
+
+### [mini.splitjoin](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-splitjoin.md)
+
+Split and join arguments, array elements, etc. Toggles between single-line and multi-line formats.
+
+| Key | Action |
+| --- | --- |
+| `gS` | Toggle split/join |
+
+Examples: `gS` on `foo(a, b, c)` splits to multi-line; `gS` again joins back.
+
+Possible alternatives:
+
+* [treesj](https://github.com/Wansmer/treesj)
+* [splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim)
+
+
+### [mini.surround](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
+
+Add, delete, replace surrounding pairs (brackets, quotes, tags, etc.).
+
+| Key | Action |
+| --- | --- |
+| `sa{motion}{char}` | Add surrounding |
+| `sd{char}` | Delete surrounding |
+| `sr{old}{new}` | Replace surrounding |
+| `sf{char}` | Find surrounding (forward) |
+| `sF{char}` | Find surrounding (backward) |
+| `sh{char}` | Highlight surrounding |
+
+Examples: `saiw"` (surround word with quotes), `sd"` (delete quotes), `sr"'` (replace `"` with `'`).
+
+Possible alternatives:
+
+* [vim-sandwich](https://github.com/machakann/vim-sandwich)
+* [nvim-surround](https://github.com/kylechui/nvim-surround)
 
 
 ### [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
@@ -221,7 +307,7 @@ Keymappings:
 
 Possible alternatives:
 
-* [mini.completion](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-completion.md) (simpler, but fewer sources - no tmux, path, calc, etc.)
+* [mini.completion](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md) (simpler, but fewer sources - no tmux, path, calc, etc.)
 
 
 ### [nvim-navic](https://github.com/SmiteshP/nvim-navic)
@@ -258,93 +344,6 @@ Keymappings:
 Possible alternatives:
 
 * [vim-vinegar](https://github.com/tpope/vim-vinegar)
-
-
-### [mini.ai](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-ai.md)
-
-Extended text objects with treesitter support. Works alongside `nvim-treesitter-textobjects` which provides the movement commands (`]m`, `[[`, etc.) while mini.ai handles the text object selection.
-
-| Key | Action |
-| --- | --- |
-| `if`/`af` | Function (inner/around) |
-| `ic`/`ac` | Class |
-| `ia`/`aa` | Argument/parameter |
-| `ii`/`ai` | Indent block |
-| `iq`/`aq` | Quotes (`'`, `"`, `` ` ``) |
-| `ib`/`ab` | Brackets (`()`, `[]`, `{}`) |
-| `it`/`at` | HTML tags |
-
-Use with operators: `daf` (delete function), `ciq` (change inner quotes), `vai` (select indent block), etc.
-
-
-### [mini.clue](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-clue.md)
-
-Show available keybindings in a floating window after pressing a prefix key. Includes "submodes" for window operations.
-
-After `<C-w>` you can keep pressing:
-- `h`/`j`/`k`/`l` to navigate windows
-- `+`/`-`/`<`/`>` to resize windows
-
-Possible alternatives:
-
-* [which-key.nvim](https://github.com/folke/which-key.nvim)
-* [hydra.nvim](https://github.com/anuvyklack/hydra.nvim) (alternative for `postkeys`)
-
-
-### [mini.operators](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-operators.md)
-
-Text edit operators for replace, exchange, and sort.
-
-| Key | Action |
-| --- | --- |
-| `gz{motion}` | Replace with register |
-| `gzz` | Replace line |
-| `gz` (visual) | Replace selection |
-| `gx{motion}` | Exchange text (use twice to swap) |
-| `gxx` | Exchange line |
-| `gs{motion}` | Sort text |
-| `gss` | Sort line (characters) |
-
-Possible alternatives:
-
-* [opsort.vim](https://github.com/ralismark/opsort.vim) (would support visual-block column sorting / sorting lines by selected column)
-
-
-### [mini.surround](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-surround.md)
-
-Add, delete, replace surrounding pairs (brackets, quotes, tags, etc.).
-
-| Key | Action |
-| --- | --- |
-| `sa{motion}{char}` | Add surrounding |
-| `sd{char}` | Delete surrounding |
-| `sr{old}{new}` | Replace surrounding |
-| `sf{char}` | Find surrounding (forward) |
-| `sF{char}` | Find surrounding (backward) |
-| `sh{char}` | Highlight surrounding |
-
-Examples: `saiw"` (surround word with quotes), `sd"` (delete quotes), `sr"'` (replace `"` with `'`).
-
-Possible alternatives:
-
-* [vim-sandwich](https://github.com/machakann/vim-sandwich)
-* [nvim-surround](https://github.com/kylechui/nvim-surround)
-
-
-### [mini.splitjoin](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-splitjoin.md)
-
-Split and join arguments, array elements, etc. Toggles between single-line and multi-line formats.
-
-| Key | Action |
-| --- | --- |
-| `gS` | Toggle split/join |
-
-Examples: `gS` on `foo(a, b, c)` splits to multi-line; `gS` again joins back.
-
-Possible alternatives:
-
-* [treesj](https://github.com/Wansmer/treesj)
-* [splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim)
 
 
 ### [vim-tmux-runner.vim](https://git.navidsassan.ch/navid.sassan/vim-tmux-runner.vim.git)
