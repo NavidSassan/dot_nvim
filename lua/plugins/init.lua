@@ -600,7 +600,7 @@ return {
         config = function()
             local misc = require('mini.misc')
             misc.setup()
-            misc.setup_auto_root()
+            -- misc.setup_auto_root() it actually changes the cwd, which is annoying for grep
             misc.setup_restore_cursor()
         end,
     },
