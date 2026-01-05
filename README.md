@@ -67,6 +67,7 @@ Possible alternatives:
 
 * [boole.nvim](https://github.com/nat-418/boole.nvim)
 * [nvim-toggler](https://github.com/nguyenvukhang/nvim-toggler)
+* [vim-speeddating](https://github.com/tpope/vim-speeddating) (only handles dates)
 
 
 ### [diffview.nvim](https://github.com/sindrets/diffview.nvim)

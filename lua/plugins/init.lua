@@ -495,7 +495,6 @@ return {
     { dir = '~/git/private/ansible.nvim' },
     { 'tpope/vim-abolish', event = "VeryLazy" },
     { 'tpope/vim-fugitive', cmd = { "Git", "G", "Gdiffsplit", "Gclog", "Gread", "Gwrite" } },
-    { 'tpope/vim-speeddating', keys = { '<C-a>', '<C-x>' } },
     { 'lervag/vimtex', ft = "tex" },
     { 'stsewd/sphinx.nvim', ft = "rst", build = ":UpdateRemotePlugins" },
     {
@@ -622,7 +621,11 @@ return {
     },
     {
         'nvim-mini/mini.operators',
-        keys = { 'gz', 'gx', 'gs' },
+        keys = {
+            { 'gz', mode = { 'n', 'x' } },
+            { 'gx', mode = { 'n', 'x' } },
+            { 'gs', mode = { 'n', 'x' } },
+        },
         opts = {
             replace = { prefix = 'gz' },
             multiply = { prefix = '' },

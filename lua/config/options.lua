@@ -65,9 +65,6 @@ vim.o.mouse = 'a'
 -- Diff
 vim.opt.diffopt:append('vertical')
 
--- Increment/decrement
-vim.opt.nrformats:append('alpha')
-
 -- netrw
 vim.g.netrw_bufsettings = 'noma nomod nobl nowrap ro nornu'
 vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+'
