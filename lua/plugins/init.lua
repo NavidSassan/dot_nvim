@@ -588,6 +588,8 @@ return {
                     clue.gen_clues.square_brackets(),
                     clue.gen_clues.windows({ submode_navigate = true, submode_resize = true }),
                     clue.gen_clues.z(),
+                    { mode = 'n', keys = 'gc', postkeys = 'g' },
+                    { mode = 'x', keys = 'gc', postkeys = 'g' },
                 },
             }
         end,

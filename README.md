@@ -228,6 +228,8 @@ After `<C-w>` you can keep pressing:
 - `h`/`j`/`k`/`l` to navigate windows
 - `+`/`-`/`<`/`>` to resize windows
 
+**Note on plugin mappings:** Plugin mappings with doubled letters (like `gcc` from mini.comment) need explicit clues. The `gen_clues.*()` functions only know about built-in Vim commands. When you press `gc`, mini.clue doesn't know that another `c` can follow, so the second keypress gets lost. Fix this by adding `{ mode = 'n', keys = 'gc', postkeys = 'g' }` to tell mini.clue to keep listening after `gc`.
+
 Possible alternatives:
 
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
