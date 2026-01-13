@@ -62,6 +62,7 @@ end
 function M.replace_pws()
     vim.cmd([[%s/\vpassword: '\zs.*\ze'/\=luaeval("require('config.functions').genpw()")/g]])
 end
+vim.api.nvim_create_user_command('ReplacePws', M.replace_pws, {})
 
 -- Create RST heading underline
 function M.rst_heading()
