@@ -54,11 +54,11 @@ map('n', '<leader>pa', '<cmd>VtrAttachToPane<cr>', { silent = true, desc = 'Atta
 map('n', '<leader>r', '<cmd>update<bar>VtrSendCommandToRunner<cr>', { silent = true, desc = 'Run command in tmux' })
 map('n', '<leader>sc', '<cmd>VtrSetCommand<cr>', { silent = true, desc = 'Set tmux command' })
 
--- Ansible reload
-map('n', '<leader>t', function()
+-- Ansible sort
+map('n', '<leader>as', function()
     vim.cmd('write')
     require('reload').ansible()
-end, { silent = true, desc = 'Reload ansible' })
+end, { silent = true, desc = 'Ansible sort' })
 
 -- Tab management
 map('n', '<leader>tc', '<cmd>tabclose<cr>', { silent = true, desc = 'Close tab' })
