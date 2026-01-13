@@ -1,6 +1,11 @@
 local map = vim.keymap.set
 local functions = require('config.functions')
 
+-- Add relative jumps to the jumplist if they are > 1 line
+-- This makes 12j or 5k show up in the Ctrl-o history
+vim.keymap.set("n", "k", [[v:count > 1 ? "m'" . v:count . "k" : "k"]], { expr = true, silent = true })
+vim.keymap.set("n", "j", [[v:count > 1 ? "m'" . v:count . "j" : "j"]], { expr = true, silent = true })
+
 -- Diff operations
 map('n', '<leader>dp', 'V:diffput<cr>', { silent = true, desc = 'Diff put' })
 map('n', '<leader>do', 'V:diffget<cr>', { silent = true, desc = 'Diff get' })
