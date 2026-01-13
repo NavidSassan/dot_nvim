@@ -87,3 +87,11 @@ vim.g.vimtex_view_method = 'zathura'
 
 -- Load cfilter
 vim.cmd.packadd('cfilter')
+
+-- Custom filetypes
+vim.filetype.add({
+    pattern = {
+        ['.*/clf/.*%.ya?ml'] = 'yaml.clf',
+        ['.*/git/lf/lfops.*/.*.yml'] = 'yaml.ansible',
+    },
+})

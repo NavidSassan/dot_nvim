@@ -345,6 +345,19 @@ snippets.javascript = {
     }),
 }
 
+-- For compound filetype yaml.clf (LuaSnip loads both yaml and clf)
+snippets.clf = {
+    snippet({ trig = "cb"}, fmt(
+        [[
+        ```bash
+        {}
+        ```
+        ]],
+        { i(1) }
+    )),
+}
+
+
 -- table.insert(snippets.all, ls.parser.parse_snippet("example", "-- $TM_FILENAME\nfunc $1($2) $3 {\n\t$0\n}"))
 
 -- luasnip.lua

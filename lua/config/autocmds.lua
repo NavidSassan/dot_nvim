@@ -34,12 +34,3 @@ autocmd({ 'BufNewFile', 'BufRead' }, {
     end,
     group = augroup('SshConfigs', { clear = true }),
 })
-
--- Ansible filetype for lfops
-autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = '/*/git/lf/lfops*/**/*.yml',
-    callback = function()
-        vim.bo.filetype = 'yaml.ansible'
-    end,
-    group = augroup('AnsibleFiletype', { clear = true }),
-})
