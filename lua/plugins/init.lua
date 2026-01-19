@@ -687,8 +687,44 @@ return {
                 custom_textobjects = {
                     -- Use treesitter for function/class/parameter
                     f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
-                    c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
                     a = ai.gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }),
+                    -- c = class for most filetypes, code block for markdown/rst
+                    c = function(ai_type)
+                        local ft = vim.bo.filetype
+                        if ft == 'markdown' then
+                            local start_line = vim.fn.search('^```', 'bnW')
+                            if start_line == 0 then return end
+                            local end_line = vim.fn.search('^```', 'nW')
+                            if end_line == 0 then return end
+                            local from_line = ai_type == 'a' and start_line or start_line + 1
+                            local to_line = ai_type == 'a' and end_line or end_line - 1
+                            if from_line > to_line then return end
+                            local from_col = 1
+                            local to_col = #vim.fn.getline(to_line) + 1
+                            return { from = { line = from_line, col = from_col }, to = { line = to_line, col = to_col } }
+                        elseif ft == 'rst' then
+                            local start_line = vim.fn.search([[^\S.*::\s*$\|^\.\. code-block::]], 'bnW')
+                            if start_line == 0 then return end
+                            local lines = vim.api.nvim_buf_get_lines(0, start_line, -1, false)
+                            local content_start, content_end
+                            for i, line in ipairs(lines) do
+                                if line:match('^%s+%S') then
+                                    content_start = content_start or (start_line + i)
+                                    content_end = start_line + i
+                                elseif content_start and line:match('^%S') then
+                                    break
+                                end
+                            end
+                            if not content_start then return end
+                            local from_line = ai_type == 'a' and start_line or content_start
+                            local to_line = content_end
+                            local to_col = #vim.fn.getline(to_line) + 1
+                            return { from = { line = from_line, col = 1 }, to = { line = to_line, col = to_col } }
+                        else
+                            local spec = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' })
+                            return spec(ai_type)
+                        end
+                    end,
                 },
             }
         end,
