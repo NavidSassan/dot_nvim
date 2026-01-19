@@ -181,11 +181,11 @@ Keymappings:
 
 ### [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
 
-"Markdown Preview for (Neo)vim". Really fast preview, and synchronises cursor position from neovim to browser.
+"Markdown Preview for (Neo)vim". Browser-based preview with synchronized scrolling.
 
 Possible alternatives:
 
-* [peek.nvim](https://github.com/toppair/peek.nvim) (less features right now, requires deno for installation)
+* [peek.nvim](https://github.com/toppair/peek.nvim) (requires Deno)
 
 
 ### [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim)
