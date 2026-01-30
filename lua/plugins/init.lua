@@ -175,6 +175,10 @@ return {
 
             vim.lsp.config('*', { capabilities = capabilities })
 
+            vim.lsp.config('ansiblels', {
+                root_markers = { 'galaxy.yml', 'galaxy.yaml' },
+            })
+
             vim.lsp.config('ltex', {
                 settings = { ltex = { language = 'en-GB' } },
             })
