@@ -92,6 +92,6 @@ vim.cmd.packadd('cfilter')
 vim.filetype.add({
     pattern = {
         ['.*/clf/.*%.ya?ml'] = 'yaml.clf',
-        ['.*/git/lf/lfops.*/.*.yml'] = 'yaml.ansible',
+        ['.*/git/.*/lfops.*/.*.yml'] = 'yaml.ansible',
     },
 })
