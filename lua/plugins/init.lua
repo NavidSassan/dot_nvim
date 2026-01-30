@@ -743,7 +743,7 @@ return {
     },
     {
         'nvim-mini/mini.comment',
-        event = "VeryLazy",
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
             options = {
                 custom_commentstring = function()
