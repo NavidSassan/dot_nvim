@@ -56,6 +56,11 @@ vim.o.undofile = true
 vim.o.undolevels = 3000
 vim.o.undoreload = 10000
 
+-- Diagnostics
+vim.diagnostic.config({
+    float = { source = true },
+})
+
 -- Folding
 vim.o.foldenable = false
 
@@ -90,8 +95,19 @@ vim.cmd.packadd('cfilter')
 
 -- Custom filetypes
 vim.filetype.add({
+    extension = {
+        fwf = 'yaml.fwf',
+    },
     pattern = {
         ['.*/clf/.*%.ya?ml'] = 'yaml.clf',
-        ['.*/git/.*/lfops.*/.*.yml'] = 'yaml.ansible',
+        -- Only set yaml.ansible for real files; diffview buffers get plain yaml
+        -- to prevent ansiblels from failing to spawn ansible-lint
+        ['.*/git/.*/lfops.*/.*.yml'] = function(path, bufnr)
+            if vim.fn.filereadable(path) == 1 then
+                return 'yaml.ansible'
+            end
+            return 'yaml'
+        end,
+        ['.*/ssh/config'] = 'sshconfig',
     },
 })
