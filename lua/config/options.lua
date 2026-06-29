@@ -27,7 +27,8 @@ vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.breakindent = true
-vim.opt.clipboard = "unnamedplus"
+-- Yanks go to the unnamed register (indentation preserved); a TextYankPost
+-- autocmd mirrors a dedented copy to the system clipboard (see autocmds.lua).
 
 -- Search and grep
 vim.o.inccommand = 'split'

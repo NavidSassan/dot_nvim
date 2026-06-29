@@ -396,9 +396,14 @@ Possible alternatives:
 
 | Key          | Action                                  |
 | ---          | ---                                     |
-| `<leader>pa` | Attach to a pane                        |
 | `<leader>r`  | Run a command in the attached tmux pane |
 | `<leader>sc` | Set the command to be run               |
+
+Commands:
+
+| Command            | Action           |
+| ---                | ---              |
+| `:VtrAttachToPane` | Attach to a pane |
 
 
 ### [yanky.nvim](https://github.com/gbprod/yanky.nvim)
@@ -407,10 +412,21 @@ Provides a yank-ring, allowing cycling through the yank history on paste. Also h
 
 Keymappings:
 
-| Key     | Action                                 |
-| ---     | ---                                    |
-| `<C-n>` | Cycle forward through the yank-ring.   |
-| `<C-p>` | Cycle backwards through the yank-ring. |
+| Key          | Action                                 |
+| ---          | ---                                    |
+| `<C-n>`      | Cycle forward through the yank-ring.   |
+| `<C-p>`      | Cycle backwards through the yank-ring. |
+| `<leader>p`  | Paste after from the system clipboard. |
+| `<leader>P`  | Paste before from the system clipboard. |
+
+### Clipboard behavior
+
+`clipboard` is intentionally *not* set to `unnamedplus`. Yanks go to the unnamed
+register with their original indentation preserved (so in-editor `p`/`P` keep the
+layout), while a `TextYankPost` autocmd (`lua/config/autocmds.lua`) mirrors a
+*dedented* copy to the system clipboard — the common leading indentation is
+stripped so pasting into other apps comes out flush-left. Use `<leader>p` /
+`<leader>P` to paste the raw system-clipboard content back into Neovim.
 
 Possible alternatives:
 

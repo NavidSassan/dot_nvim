@@ -50,7 +50,6 @@ map('n', '<leader>gbl', '<cmd>Git blame<cr>', { silent = true, desc = 'Git blame
 map('n', '<leader>gd', '<cmd>Gdiffsplit<cr>', { silent = true, desc = 'Git diff split' })
 
 -- vim-tmux-runner
-map('n', '<leader>pa', '<cmd>VtrAttachToPane<cr>', { silent = true, desc = 'Attach to tmux pane' })
 map('n', '<leader>r', '<cmd>update<bar>VtrSendCommandToRunner<cr>', { silent = true, desc = 'Run command in tmux' })
 map('n', '<leader>sc', '<cmd>VtrSetCommand<cr>', { silent = true, desc = 'Set tmux command' })
 
@@ -76,6 +75,10 @@ map({ 'n', 'x' }, 'gP', '<Plug>(YankyGPutBefore)')
 map('n', '<c-n>', '<Plug>(YankyCycleForward)')
 map('n', '<c-p>', '<Plug>(YankyCycleBackward)')
 map({ 'n', 'x' }, 'y', '<Plug>(YankyYank)')
+
+-- Paste raw (un-dedented) content from the system clipboard
+map({ 'n', 'x' }, '<leader>p', '"+p', { desc = 'Paste after from system clipboard' })
+map({ 'n', 'x' }, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
 -- Undo break-points
 map('i', ',', ',<c-g>u')
