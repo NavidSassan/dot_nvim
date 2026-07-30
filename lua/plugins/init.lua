@@ -1,9 +1,10 @@
 return {
 
     -- Colorschemes
-    { "folke/tokyonight.nvim", lazy = true, priority = 1000, opts = { style = "moon" } },
     { 'EdenEast/nightfox.nvim', lazy = true, priority = 1000 },
+    { 'catppuccin/nvim', lazy = true, priority = 1000 },
     { 'ellisonleao/gruvbox.nvim', lazy = true, priority = 1000 },
+    { 'folke/tokyonight.nvim', lazy = true, priority = 1000, opts = { style = "moon" } },
     { 'shaunsingh/solarized.nvim', lazy = true, priority = 1000 },
 
     -- Utilities
