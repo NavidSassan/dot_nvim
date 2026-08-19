@@ -509,7 +509,23 @@ return {
     { 'tpope/vim-abolish', event = "VeryLazy" },
     { 'tpope/vim-fugitive', cmd = { "Git", "G", "Gdiffsplit", "Gclog", "Gread", "Gwrite" } },
     { 'lervag/vimtex', ft = "tex" },
-    { 'stsewd/sphinx.nvim', ft = "rst", build = ":UpdateRemotePlugins" },
+    {
+        -- Used only for the nvim-treesitter queries in after/queries/rst/: Sphinx
+        -- roles and directives get @function.builtin highlighting, and directives
+        -- upstream does not cover (seealso, toctree, versionadded, prompt, the
+        -- sphinx-design and sphinx-tabs ones) get their bodies injected.
+        -- Everything else the plugin offers is unreachable in this config: the
+        -- completion source is coc.nvim only (we run nvim-cmp), and :SphinxRefs /
+        -- :SphinxFiles are fzf.vim wrappers, which is not installed. Setting
+        -- g:loaded_sphinx skips plugin/sphinx.vim so those two commands are never
+        -- defined. That leaves the Python remote plugin unused, hence no
+        -- build = ':UpdateRemotePlugins' and no need for the python3-sphinx package.
+        'stsewd/sphinx.nvim',
+        ft = "rst",
+        init = function()
+            vim.g.loaded_sphinx = 1
+        end,
+    },
     {
         'nvim-telescope/telescope.nvim',
         cmd = "Telescope",
