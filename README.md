@@ -456,7 +456,7 @@ Keymappings:
 | `<leader>p`  | Paste after from the system clipboard. |
 | `<leader>P`  | Paste before from the system clipboard. |
 
-### Clipboard behavior
+#### Clipboard behavior
 
 `clipboard` is intentionally *not* set to `unnamedplus`. Yanks go to the unnamed
 register with their original indentation preserved (so in-editor `p`/`P` keep the
