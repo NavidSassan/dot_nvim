@@ -597,6 +597,14 @@ return {
                     { mode = 'x', keys = '<Leader>' },
                     { mode = 'n', keys = 'g' },
                     { mode = 'x', keys = 'g' },
+                    -- Operator-pending too, so g-motions still show clues while
+                    -- an operator waits for its motion (dgg, ygg, gcgg). Not a
+                    -- mini.clue default: operator-pending triggers misbehave in
+                    -- "temporary Normal mode", so i_CTRL-O followed by an
+                    -- operator and a g-motion (like i_CTRL-O dgg) types the keys
+                    -- into the buffer instead of running them. Plain i_CTRL-O gg
+                    -- is unaffected.
+                    { mode = 'o', keys = 'g' },
                     { mode = 'n', keys = 'z' },
                     { mode = 'n', keys = '<C-w>' },
                     { mode = 'n', keys = '[' },
@@ -608,6 +616,10 @@ return {
                     { mode = 'i', keys = '<C-r>' },
                     { mode = 'c', keys = '<C-r>' },
                 },
+                -- No gc submode clue here: mini.clue only executes a query once
+                -- exactly one key combination matches it, and Neovim maps both
+                -- gc and gcc, so gc is never the sole match and its postkeys
+                -- could never fire.
                 clues = {
                     clue.gen_clues.builtin_completion(),
                     clue.gen_clues.g(),
@@ -616,8 +628,6 @@ return {
                     clue.gen_clues.square_brackets(),
                     clue.gen_clues.windows({ submode_navigate = true, submode_resize = true }),
                     clue.gen_clues.z(),
-                    { mode = 'n', keys = 'gc', postkeys = 'g' },
-                    { mode = 'x', keys = 'gc', postkeys = 'g' },
                 },
             }
         end,
