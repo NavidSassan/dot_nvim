@@ -195,30 +195,43 @@ Possible alternatives:
 Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pylsp (see [README](https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md)).
 
 
-#### esbonio LSP
+#### esbonio LSP (evaluated, not used)
 
-Sphinx/reStructuredText language server. It is **not** installed through Mason, it has to be
-installed by hand into the same virtualenv that builds the docs:
+esbonio is the Sphinx/reStructuredText language server. It was set up, measured against a real
+project and then dropped again. This section exists so the evaluation does not get repeated.
 
-```
-python3 -m venv ~/venvs/sphinx
-~/venvs/sphinx/bin/pip install esbonio sphinx
-```
+What it delivers, all of it verified rather than taken from the docs:
 
-Esbonio imports `conf.py` and every Sphinx extension the project uses, so it only works if it
-runs in an environment that has all of them. Mason's build ships esbonio without Sphinx, which is
-why it is unusable here.
+* completion for `:ref:` and `:doc:` from the built object inventory
+* live `undefined label: '...'` diagnostics, which the `doc8` / `rstcheck` / `sphinx-lint` pass in
+  the wiki build scripts does not catch, because resolving labels needs Sphinx itself
+* document symbols, feeding the nvim-navic breadcrumb
 
-Two things are worth knowing when this breaks:
+What it costs:
 
-* The `cmd` in `lua/plugins/init.lua` is mandatory. mason-lspconfig hardcodes `cmd = { 'esbonio' }`,
-  but esbonio v2 expects a subcommand (`esbonio server`). Without one it prints its usage, exits 0,
-  and the server silently never attaches. Neither `:checkhealth` nor the LSP log flags this as an
-  error, the client is simply absent.
-* Completion for `:ref:` and `:doc:` needs a project esbonio can actually build. Projects that keep
-  `conf.py` outside the source root, or spread sources over several repositories, need a
-  `pyproject.toml` next to the sources holding a `[tool.esbonio.sphinx]` section with `buildCommand`
-  set to the full `sphinx-build` invocation.
+* a background Sphinx build per project, cached under `~/.cache/esbonio/`
+* a first build that is slow **and silent**: completion returns nothing until it finishes, with no
+  progress indication, which is indistinguishable from a broken setup
+* esbonio pinned in the docs venv, because it imports `conf.py` and every Sphinx extension the
+  project uses. Mason's build ships esbonio without Sphinx and is therefore unusable
+* a `[tool.esbonio.sphinx]` section with an explicit `buildCommand` in every project whose `conf.py`
+  sits outside the source root, since esbonio only auto-detects `conf.py` by walking upwards from
+  the open file
+
+Verdict: the gain is cross-reference completion plus catching broken references before the build.
+For prose-heavy wikis with few cross-references that does not carry the moving parts, so esbonio is
+absent from `ensure_installed` and from `vim.lsp.enable()`.
+
+Two findings worth keeping if this is ever revisited:
+
+* mason-lspconfig hardcodes `cmd = { 'esbonio' }`, but esbonio v2 needs a subcommand. The bare call
+  prints its usage and exits 0, so the server never attaches, and neither `:checkhealth` nor the LSP
+  log reports an error. A working command is
+  `{ '~/venvs/sphinx/bin/python', '-m', 'esbonio.server' }`. Updating the plugins does not fix this:
+  nvim-lspconfig corrected its own default, but the mason-lspconfig override wins over it.
+* `python -m esbonio sphinx -c pyproject.toml build` runs the server's build path from the shell,
+  which is the fastest way to tell a broken config from a build that is merely still running. The
+  `-c` goes before the `build` subcommand.
 
 
 #### ltex LSP
