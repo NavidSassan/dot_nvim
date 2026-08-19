@@ -513,10 +513,27 @@ return {
     { 'j-hui/fidget.nvim', event = "LspAttach", opts = {} },
     { 'mbbill/undotree', cmd = "UndotreeToggle" },
     {
-        "ggandor/leap.nvim",
+        -- Upstream left GitHub for Codeberg and then deleted the GitHub source,
+        -- so ggandor/leap.nvim resolves to a repo holding nothing but a README.
+        url = 'https://codeberg.org/andyg/leap.nvim',
         keys = {
-            { "r", '<Plug>(leap-forward-to)', mode = { 'n', 'x', 'o' } },
-            { "R", '<Plug>(leap-backward-to)', mode = { 'n', 'x', 'o' } },
+            -- <Plug>(leap-forward) is `leap { inclusive = true }`, which makes
+            -- `drab` eat the first character of the target. Exclusive instead,
+            -- so that deleting up to `abc` leaves `abc` standing. Unlike
+            -- <Plug>(leap-forward-next-to), which would do the same for the
+            -- operator, this keeps a plain `r` landing on the target rather
+            -- than one character before it.
+            {
+                "r",
+                function()
+                    require('leap').leap { inclusive = false }
+                end,
+                mode = { 'n', 'x', 'o' },
+                desc = 'Leap forward',
+            },
+            -- Backward needs no flag: <Plug>(leap-backward) is
+            -- `leap { backward = true }` and is exclusive already.
+            { "R", '<Plug>(leap-backward)', mode = { 'n', 'x', 'o' }, desc = 'Leap backward' },
         },
     },
     { dir = '~/git/private/ansible.nvim' },

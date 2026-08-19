@@ -134,8 +134,6 @@ Keymappings:
 | `r` | same as `r`, but for operator-pending mode, for example after a `d`                           |
 | `R` | same as `R`, but backwards and for operator-pending mode, for example after a `d`             |
 
-TODO: last two keybinds do not work
-
 "Entering traversal mode after the first input is a useful shortcut, especially in operator-pending mode, but it can also be used as a substitute for normal-mode f/t motions. s{char}`<enter>` is the same as f{char}, but works over multiple lines."
 
 Possible alternatives:
