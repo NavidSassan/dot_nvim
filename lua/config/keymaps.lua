@@ -54,10 +54,7 @@ map('n', '<leader>r', '<cmd>update<bar>VtrSendCommandToRunner<cr>', { silent = t
 map('n', '<leader>sc', '<cmd>VtrSetCommand<cr>', { silent = true, desc = 'Set tmux command' })
 
 -- Ansible sort
-map('n', '<leader>as', function()
-    vim.cmd('write')
-    require('reload').ansible()
-end, { silent = true, desc = 'Ansible sort' })
+map('n', '<leader>as', '<cmd>write | AnsibleSort<cr>', { silent = true, desc = 'Ansible sort' })
 
 -- Tab management
 map('n', '<leader>tc', '<cmd>tabclose<cr>', { silent = true, desc = 'Close tab' })
