@@ -195,6 +195,32 @@ Possible alternatives:
 Note: run `:PylspInstall pylsp-mypy pyls-isort pylsp-rope` after installing pylsp (see [README](https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/server_configurations/pylsp/README.md)).
 
 
+#### esbonio LSP
+
+Sphinx/reStructuredText language server. It is **not** installed through Mason, it has to be
+installed by hand into the same virtualenv that builds the docs:
+
+```
+python3 -m venv ~/venvs/sphinx
+~/venvs/sphinx/bin/pip install esbonio sphinx
+```
+
+Esbonio imports `conf.py` and every Sphinx extension the project uses, so it only works if it
+runs in an environment that has all of them. Mason's build ships esbonio without Sphinx, which is
+why it is unusable here.
+
+Two things are worth knowing when this breaks:
+
+* The `cmd` in `lua/plugins/init.lua` is mandatory. mason-lspconfig hardcodes `cmd = { 'esbonio' }`,
+  but esbonio v2 expects a subcommand (`esbonio server`). Without one it prints its usage, exits 0,
+  and the server silently never attaches. Neither `:checkhealth` nor the LSP log flags this as an
+  error, the client is simply absent.
+* Completion for `:ref:` and `:doc:` needs a project esbonio can actually build. Projects that keep
+  `conf.py` outside the source root, or spread sources over several repositories, need a
+  `pyproject.toml` next to the sources holding a `[tool.esbonio.sphinx]` section with `buildCommand`
+  set to the full `sphinx-build` invocation.
+
+
 #### ltex LSP
 
 * Grammar/Spell Checker

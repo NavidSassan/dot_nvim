@@ -165,8 +165,10 @@ return {
 
             require('mason').setup()
             require('mason-lspconfig').setup {
+                -- No esbonio here: it comes from ~/venvs/sphinx instead, see the
+                -- vim.lsp.config('esbonio', ...) call below.
                 ensure_installed = {
-                    'ansiblels', 'clangd', 'esbonio', 'jsonls',
+                    'ansiblels', 'clangd', 'jsonls',
                     'phpactor', 'ruff', 'texlab', 'pyright', 'lua_ls', 'typos_lsp',
                 },
                 automatic_enable = {
@@ -178,6 +180,19 @@ return {
 
             vim.lsp.config('ansiblels', {
                 root_markers = { 'galaxy.yml', 'galaxy.yaml' },
+            })
+
+            -- Requires `~/venvs/sphinx/bin/pip install esbonio` (see README).
+            -- Esbonio has to run in the same environment that builds the docs,
+            -- because it imports conf.py and every Sphinx extension it uses.
+            -- The venv is also why we do not take the Mason build: that one has
+            -- esbonio but no Sphinx.
+            -- The explicit cmd is mandatory, not a preference. Mason-lspconfig
+            -- hardcodes `cmd = { 'esbonio' }`, and esbonio v2 needs a subcommand
+            -- (`server`), so the bare call just prints its usage and exits 0.
+            -- The server then never attaches and nothing reports an error.
+            vim.lsp.config('esbonio', {
+                cmd = { vim.fn.expand('~/venvs/sphinx/bin/python'), '-m', 'esbonio.server' },
             })
 
             vim.lsp.config('ltex', {
