@@ -69,6 +69,19 @@ return {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        -- TODO: migrate to the `main` branch once Neovim 0.12 lands in the
+        -- distro repos. 0.12 is upstream stable already, it is only missing
+        -- from the package repos here, so this is a packaging wait and not a
+        -- wait for the release.
+        -- `master` is archived, but `main` requires Neovim 0.12 and drops
+        -- lua/nvim-treesitter/configs.lua, so the whole opts block below has to
+        -- be rewritten for it: setup(), ensure_installed, textobjects and the
+        -- foldexpr all change shape.
+        -- The branch is pinned explicitly on purpose. Without it lazy.nvim
+        -- derives it from the local refs/remotes/origin/HEAD, which still says
+        -- master only because it is stale; the remote default is main already.
+        -- A fresh clone would silently migrate and break every config below.
+        branch = "master",
         version = false,
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
@@ -569,6 +582,12 @@ return {
     { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
     {
         'stevearc/aerial.nvim',
+        -- TODO: unpin once Neovim 0.12 lands in the distro repos, together with
+        -- nvim-treesitter. Everything after this commit requires Neovim 0.12,
+        -- because aerial followed nvim-treesitter to its `main` branch ("drop
+        -- support for nvim <0.12 to match nvim-treesitter"). 92cb56f is the
+        -- last commit that still runs on 0.11.
+        commit = '92cb56f',
         event = 'LspAttach',
         cmd = { 'AerialToggle', 'AerialOpen', 'AerialNavToggle' },
         -- Using on_attach instead of keys because lazy.nvim keys don't work reliably here
