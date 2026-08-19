@@ -31,7 +31,6 @@ ls.config.set_config {
 -- s(context, nodes, condition, ...)
 local snippet = ls.s
 
--- TODO: Write about this.
 --  Useful for dynamic nodes and choice nodes
 local snippet_from_nodes = ls.sn
 
@@ -67,7 +66,6 @@ local c = ls.choice_node
 
 local d = ls.dynamic_node
 
--- TODO: Document what I've learned about lambda
 local l = require("luasnip.extras").lambda
 
 local rep = require("luasnip.extras").rep
