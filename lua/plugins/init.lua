@@ -22,58 +22,30 @@ return {
                     theme = 'auto',
                     component_separators = '|',
                     section_separators = '',
-                    -- Panels and UI buffers have no code context to show, so
-                    -- they would just pay a line for an empty winbar. Keyed by
-                    -- `winbar` so the statusline is left alone.
-                    disabled_filetypes = {
-                        winbar = {
-                            'DiffviewFileHistory',
-                            'DiffviewFiles',
-                            'aerial',
-                            'checkhealth',
-                            'fugitive',
-                            'help',
-                            'lazy',
-                            'mason',
-                            'oil',
-                            'qf',
-                            'undotree',
-                        },
-                    },
                 },
                 sections = {
                     lualine_c = {
                         { 'filename' },
                     },
-                },
-                -- Use nvim-navic's own lualine component (it ships
-                -- lua/lualine/components/navic.lua) rather than passing
-                -- navic.get_location by reference. lualine invokes function
-                -- components as `fn(self, is_focused)`, while the signature is
-                -- `get_location(opts, bufnr)`, so the boolean lands in `bufnr`.
-                -- `bufnr = bufnr or current_buf` does not catch `true`, so navic
-                -- looks up a nonexistent buffer and returns "" whenever the
-                -- window is focused, and lualine pcalls the component so it
-                -- fails silently. The named component is maintained against
-                -- lualine's calling convention and cannot drift that way.
-                -- In the winbar rather than the statusline: section c is the
-                -- first thing lualine truncates, and it is already crowded.
-                -- inactive_winbar mirrors it so window height does not jump.
-                -- The spacer keeps the winbar from collapsing. Neovim hides the
-                -- winbar line entirely when it renders to an empty string, so
-                -- without a component that always returns something the bar
-                -- pops in and out as navic gains and loses symbols, and the
-                -- buffer text jumps a line every time.
-                winbar = {
-                    lualine_c = {
+                    -- Use nvim-navic's own lualine component (it ships
+                    -- lua/lualine/components/navic.lua) rather than passing
+                    -- navic.get_location by reference. lualine invokes function
+                    -- components as `fn(self, is_focused)`, while the signature
+                    -- is `get_location(opts, bufnr)`, so the boolean lands in
+                    -- `bufnr`. `bufnr = bufnr or current_buf` does not catch
+                    -- `true`, so navic looks up a nonexistent buffer and returns
+                    -- "" whenever the window is focused, and lualine pcalls the
+                    -- component so it fails silently. The named component is
+                    -- maintained against lualine's calling convention and cannot
+                    -- drift that way.
+                    -- Leftmost of section x, so the code context sits next to
+                    -- the filename and the rest of the defaults keep their
+                    -- places on the right.
+                    lualine_x = {
                         { 'navic' },
-                        { function() return ' ' end },
-                    },
-                },
-                inactive_winbar = {
-                    lualine_c = {
-                        { 'navic' },
-                        { function() return ' ' end },
+                        'encoding',
+                        'fileformat',
+                        'filetype',
                     },
                 },
             }

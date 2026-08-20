@@ -374,7 +374,7 @@ Commands:
 | ---                                       | ---                                               |
 | `:lua require'nvim-navic'.get_location()` | Returns a pretty string with context information. |
 
-TODO: integrate in statusline.
+Shown in the lualine statusline as the first component of section x, via navic's own `navic` component. Passing `get_location` by reference does not work: lualine calls function components as `fn(self, is_focused)`, so the boolean ends up in navic's `bufnr` argument and the component silently renders empty in the focused window.
 
 
 ### [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
