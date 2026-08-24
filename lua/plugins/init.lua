@@ -87,58 +87,56 @@ return {
     -- Treesitter
     {
         "nvim-treesitter/nvim-treesitter",
-        -- TODO: migrate to the `main` branch once Neovim 0.12 lands in the
-        -- distro repos. 0.12 is upstream stable already, it is only missing
-        -- from the package repos here, so this is a packaging wait and not a
-        -- wait for the release.
-        -- `master` is archived, but `main` requires Neovim 0.12 and drops
-        -- lua/nvim-treesitter/configs.lua, so the whole opts block below has to
-        -- be rewritten for it: setup(), ensure_installed, textobjects and the
-        -- foldexpr all change shape.
-        -- The branch is pinned explicitly on purpose. Without it lazy.nvim
-        -- derives it from the local refs/remotes/origin/HEAD, which still says
-        -- master only because it is stale; the remote default is main already.
-        -- A fresh clone would silently migrate and break every config below.
-        branch = "master",
-        version = false,
+        -- `main` is a full, incompatible rewrite that requires Neovim 0.12+;
+        -- `master` is frozen/archived and no longer compatible with the
+        -- treesitter core API in Neovim 0.12 (crashes on injections, e.g. in
+        -- markdown files). Now that Neovim 0.12 is installed, track `main`.
+        branch = "main",
+        -- `main` does not support lazy-loading.
+        lazy = false,
         build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
-        dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        opts = {
-            ensure_installed = {
+        dependencies = { { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' } },
+        config = function()
+            local parsers = {
                 'bash', 'c', 'css', 'html', 'java', 'javascript', 'json',
-                'kotlin', 'lua', 'markdown', 'php', 'python', 'query',
-                'regex', 'rst', 'vim', 'vimdoc', 'yaml',
-            },
-            highlight = { enable = true },
-            indent = { enable = true },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = 'gnn',
-                    node_incremental = '<M-=>',
-                    scope_incremental = '<C-s>',
-                    node_decremental = '<M-->',
+                'kotlin', 'lua', 'markdown', 'markdown_inline', 'php',
+                'python', 'query', 'regex', 'rst', 'vim', 'vimdoc', 'yaml',
+            }
+            require('nvim-treesitter').install(parsers)
+
+            -- Highlighting, folding and indentation are provided by Neovim
+            -- core / this plugin, but must be enabled manually per filetype
+            -- on `main` (no more `highlight.enable`/`indent.enable`).
+            vim.treesitter.language.register('bash', 'sh')
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = {
+                    'sh', 'c', 'css', 'html', 'java', 'javascript', 'json',
+                    'kotlin', 'lua', 'markdown', 'php', 'python', 'query',
+                    'rst', 'vim', 'help', 'yaml',
                 },
-            },
-            textobjects = {
-                move = {
-                    enable = true,
-                    set_jumps = true,
-                    goto_next_start = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
-                    goto_next_end = { [']M'] = '@function.outer', [']['] = '@class.outer' },
-                    goto_previous_start = { ['[m'] = '@function.outer', ['[['] = '@class.outer' },
-                    goto_previous_end = { ['[M'] = '@function.outer', ['[]'] = '@class.outer' },
-                },
-            },
-        },
-        config = function(_, opts)
-            vim.o.foldmethod = 'expr'
-            vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-            require("nvim-treesitter.configs").setup(opts)
+                callback = function()
+                    vim.treesitter.start()
+                    vim.wo[0][0].foldmethod = 'expr'
+                    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+
+            -- Textobjects: `main` dropped the `move.keymaps` table in favour
+            -- of setting up plain keymaps against `...textobjects.move`.
+            require('nvim-treesitter-textobjects').setup { move = { set_jumps = true } }
+            local move = require('nvim-treesitter-textobjects.move')
+            local modes = { 'n', 'x', 'o' }
+            vim.keymap.set(modes, ']m', function() move.goto_next_start('@function.outer', 'textobjects') end, { desc = 'Next function start' })
+            vim.keymap.set(modes, ']]', function() move.goto_next_start('@class.outer', 'textobjects') end, { desc = 'Next class start' })
+            vim.keymap.set(modes, ']M', function() move.goto_next_end('@function.outer', 'textobjects') end, { desc = 'Next function end' })
+            vim.keymap.set(modes, '][', function() move.goto_next_end('@class.outer', 'textobjects') end, { desc = 'Next class end' })
+            vim.keymap.set(modes, '[m', function() move.goto_previous_start('@function.outer', 'textobjects') end, { desc = 'Previous function start' })
+            vim.keymap.set(modes, '[[', function() move.goto_previous_start('@class.outer', 'textobjects') end, { desc = 'Previous class start' })
+            vim.keymap.set(modes, '[M', function() move.goto_previous_end('@function.outer', 'textobjects') end, { desc = 'Previous function end' })
+            vim.keymap.set(modes, '[]', function() move.goto_previous_end('@class.outer', 'textobjects') end, { desc = 'Previous class end' })
         end,
     },
-    { 'nvim-treesitter/playground', cmd = "TSPlaygroundToggle" },
     { 'HiPhish/rainbow-delimiters.nvim', event = { 'BufReadPost', 'BufNewFile' } },
 
     -- LSP
@@ -617,12 +615,6 @@ return {
     { 'chentoast/marks.nvim', event = "VeryLazy", opts = {} },
     {
         'stevearc/aerial.nvim',
-        -- TODO: unpin once Neovim 0.12 lands in the distro repos, together with
-        -- nvim-treesitter. Everything after this commit requires Neovim 0.12,
-        -- because aerial followed nvim-treesitter to its `main` branch ("drop
-        -- support for nvim <0.12 to match nvim-treesitter"). 92cb56f is the
-        -- last commit that still runs on 0.11.
-        commit = '92cb56f',
         event = 'LspAttach',
         cmd = { 'AerialToggle', 'AerialOpen', 'AerialNavToggle' },
         -- Using on_attach instead of keys because lazy.nvim keys don't work reliably here
