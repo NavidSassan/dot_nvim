@@ -57,6 +57,9 @@ end
 function M.genpw()
     return vim.trim(vim.fn.system("genpw"))
 end
+vim.api.nvim_create_user_command('GenPw', function()
+    vim.api.nvim_put({ M.genpw() }, 'c', true, true)
+end, {})
 
 -- Replace passwords in buffer
 function M.replace_pws()
