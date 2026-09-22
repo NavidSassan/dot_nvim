@@ -30,11 +30,6 @@ map('n', '[q', '<cmd>cprev<CR>', { desc = 'Previous quickfix' })
 map('n', ']Q', '<cmd>clast<CR>', { desc = 'Last quickfix' })
 map('n', '[Q', '<cmd>cfirst<CR>', { desc = 'First quickfix' })
 
--- Copy file:line to clipboard
-map('n', '<leader>fl', function()
-    vim.fn.setreg('+', vim.fn.expand('%') .. ':' .. vim.fn.line('.'))
-end, { silent = true, desc = 'Copy file:line to clipboard' })
-
 -- Inner line text object
 map('x', 'il', 'g_o^o', { desc = 'Inner line' })
 map('o', 'il', '<cmd>normal vil<CR>', { silent = true, desc = 'Inner line' })

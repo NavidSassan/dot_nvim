@@ -184,6 +184,31 @@ map('n', '<leader>jr', function() M.go_to_ansible_role_file("README.md") end, { 
 map('n', '<leader>jt', function() M.go_to_ansible_role_file("tasks/main.yml") end, { silent = true, desc = 'Jump to role tasks' })
 map('n', '<leader>jo', M.open_oil_in_ansible_role_dir, { silent = true, desc = 'Open Oil in role dir' })
 
+-- Local find: restrict telescope find_files to the project part the current file
+-- lives in. Patterns are matched against the full path of the current file, first
+-- match wins, so order them from most to least specific.
+local LOCAL_FIND_ROOTS = {
+    -- LFOps role dir, in `lfops/` or a numbered checkout like `lfops-2/` (Lua patterns
+    -- have no alternation, hence two entries)
+    '(.*/lfops/roles/[^/]+)',
+    '(.*/lfops%-%d+/roles/[^/]+)',
+    -- first level below lf/gitlab/
+    '(.*/lf/gitlab/[^/]+)/',
+}
+
+function M.local_find_root()
+    local current_path = vim.fn.expand('%:p')
+
+    for _, pattern in ipairs(LOCAL_FIND_ROOTS) do
+        local root = current_path:match(pattern)
+        if root then
+            return root
+        end
+    end
+
+    return nil
+end
+
 -- Ansible doc command
 vim.api.nvim_create_user_command('AnsibleDoc', function(opts)
     local ok, ansible = pcall(require, "ansible")

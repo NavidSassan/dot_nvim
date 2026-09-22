@@ -588,6 +588,16 @@ return {
             { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Live grep' },
             { '<leader>fe', function() require('telescope.builtin').diagnostics() end, desc = 'Diagnostics' },
             { '<leader>fh', function() require('telescope.builtin').help_tags() end, desc = 'Help tags' },
+            {
+                '<leader>fl',
+                function()
+                    -- cwd = nil makes find_files fall back to the current working directory
+                    require('telescope.builtin').find_files({
+                        cwd = require('config.functions').local_find_root(),
+                    })
+                end,
+                desc = 'Find files (local root)',
+            },
             { '<leader>fm', function() require('telescope.builtin').marks() end, desc = 'Marks' },
             { '<leader>fd', function() require('telescope').extensions.project.project() end, desc = 'Projects' },
         },
