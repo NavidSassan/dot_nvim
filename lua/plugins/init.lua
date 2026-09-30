@@ -606,7 +606,12 @@ return {
             telescope.setup {
                 defaults = {
                     path_display = { "truncate" },
-                    file_ignore_patterns = { "node_modules", "%.git/" },
+                    -- anchored to whole path components, so e.g. "fw" does not hide "fwbuilder/"
+                    file_ignore_patterns = {
+                        "^%.git/", "/%.git/",
+                        "^fw/", "/fw/",
+                        "^node_modules/", "/node_modules/",
+                    },
                     preview = {
                         filesize_limit = 0.5,
                         timeout = 250,
